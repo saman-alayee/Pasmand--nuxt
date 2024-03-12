@@ -84,6 +84,18 @@ h4 {
 .logo-image {
     width: 45%;
 }
+.empty-alert {
+    background-color: #f8d7da;
+    color: #721c24;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    border: 1px solid #f5c6cb;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    width: 100%;
+    font-weight: bold;
+  }
 .auth-card {
     border-radius: 12px;
     .image-side {

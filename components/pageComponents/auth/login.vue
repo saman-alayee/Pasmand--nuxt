@@ -1,5 +1,5 @@
 <template>
-  <b-container fluid class="p-4 pt-5 mt-5">
+  <b-container fluid class="p-4 pt-5 mt-4">
     <b-row class="justify-content-center">
       <b-col class="mt-5" lg="8" md="10" sm="12">
         <b-card no-body class=" auth-card">
@@ -10,13 +10,13 @@
                 <p class="text-white h6 mb-2 p-3">
                   برای ورود به سیستم نام کاربری و رمز خود را وارد کنید
                   <br />اگه حساب کاربری نداری نگران نباش، از اینجا میتونی تو سایت اسمتو بنویسی
-                  <router-link tag="a" to="/user/register" class="white">لینک ثبت نام</router-link>.
+                  <router-link tag="a" to="/register" class="white">لینک ثبت نام</router-link>.
                 </p>
               </div>
             </b-col>
             <b-col md="7" sm="12" class="mt-5 pt-2">
               <div class="logo-image p-5">
-                <img src="../../assets/logos/black.svg" alt="">
+                <img src="../../../assets/logos/black.svg" alt="">
               </div>
               <b-card-body class="p-5" title="ورود">
                 <div class="empty-alert" v-if="error">
@@ -42,8 +42,8 @@
 </template>
 
 <script>
-import BaseInput from '../elements/forms/baseInput.vue'
-import BaseButton from '../elements/button/baseButton.vue'
+import BaseInput from '../../elements/forms/baseInput.vue'
+import BaseButton from '../../elements/button/baseButton.vue'
 
 export default {
   components: {
@@ -94,16 +94,5 @@ export default {
 </script>
 
 <style scoped>
-.empty-alert {
-  background-color: #f8d7da;
-  color: #721c24;
-  padding: 10px;
-  display: flex;
-  justify-content: center;
-  border: 1px solid #f5c6cb;
-  border-radius: 8px;
-  margin-bottom: 20px;
-  width: 100%;
-  font-weight: bold;
-}
+
 </style>
