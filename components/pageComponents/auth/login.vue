@@ -26,8 +26,8 @@
                   <BaseInput label="ایمیل" type="text" iconSrc="/icons/email.svg" v-model="email" />
                   <BaseInput label="رمز عبور" type="password" iconSrc="/icons/password.svg" v-model="password" />
 
-                  <div class="d-flex justify-content-between align-items-center"><a href="/user/forgot-password"
-                      class="">رمز عبورت یادت رفته؟</a>
+                  <div class="d-flex justify-content-between align-items-center">
+                      <router-link tag="a" to="/forgetPassword" class="white">رمز عبورت یادت رفته؟</router-link>.
                     <BaseButton buttonText="ورود"
                       buttonClasses="btn-login btn btn-primary btn-md btn-multiple-state btn-shadow" />
                   </div>
