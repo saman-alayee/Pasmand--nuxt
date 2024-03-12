@@ -1,0 +1,68 @@
+@font-face {
+    font-family: 'yekan';
+    src        : url('../fonts/yekan/YekanBakhFaNum-Bold.eot');
+    src        : url('../fonts/yekan/YekanBakhFaNum-Bold.eot?#iefix') format('embedded-opentype'),
+        url('../fonts/yekan/YekanBakhFaNum-Bold.woff2') format('woff2'),
+        url('../fonts/yekan/YekanBakhFaNum-Bold.woff') format('woff');
+    font-weight : bold;
+    font-style  : normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'yekan';
+    src        : url('../fonts/yekan/YekanBakhFaNum-Medium.eot');
+    src        : url('../fonts/yekan/YekanBakhFaNum-Medium.eot?#iefix') format('embedded-opentype'),
+        url('../fonts/yekan/YekanBakhFaNum-Medium.woff2') format('woff2'),
+        url('../fonts/yekan/YekanBakhFaNum-Medium.woff') format('woff');
+    font-weight : 500;
+    font-style  : normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'yekan';
+    src        : url('../fonts/yekan/YekanBakhFaNum-Light.eot');
+    src        : url('../fonts/yekan/YekanBakhFaNum-Light.eot?#iefix') format('embedded-opentype'),
+        url('../fonts/yekan/YekanBakhFaNum-Light.woff2') format('woff2'),
+        url('../fonts/yekan/YekanBakhFaNum-Light.woff') format('woff');
+    font-weight : normal;
+    font-style  : normal;
+    font-display: swap;
+}
+
+html[dir="rtl"] body {
+    font-family: yekan;
+}
+
+html[dir="rtl"] .vuetable tr th {
+    text-align: right;
+}
+
+html[dir="rtl"] .my-auto.mx-auto {
+    margin-left : auto !important;
+    margin-right: auto !important;
+}
+
+html[dir="rtl"] .top-right-button-container .check-button button:first-of-type label.custom-control {
+    padding-right : initial !important;
+    min-height    : initial;
+    vertical-align: top;
+    margin-top    : -1px;
+}
+
+html[dir="rtl"] .top-right-button-container .check-button button:first-of-type {
+    padding-right : 3rem !important;
+    padding-left  : 0 !important;
+    padding-top   : 0.25rem !important;
+    padding-bottom: 0.5rem !important;
+}
+
+html[dir="rtl"] .sidebar .sub-menu ul .rotate-arrow-icon.collapsed i {
+    -webkit-transform: rotate(90deg);
+    transform        : rotate(90deg);
+}
+
+html[dir="rtl"] .comment-likes {
+    text-align: left;
+}
