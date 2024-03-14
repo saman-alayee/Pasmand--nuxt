@@ -1,16 +1,18 @@
 <template>
   <div>
-    <div class="header">
+    <div class="header" v-if="shouldShowSidebar">
       <div>
         <Navbar :isOpen="isOpen" @toggle-sidebar="toggleSidebar"></Navbar>
       </div>
+    </div>
+    <div class="d-flex">
       <div class="sidebar-component" v-if="shouldShowSidebar">
         <Sidebar :isOpen="isOpen" />
       </div>
-    </div>
 
-    <div :class="{ 'main': true, 'fixed-background': shouldShowFixedBackground }">
-      <Nuxt />
+      <div class="container-fluid" :class="{ 'main': true, 'fixed-background': shouldShowFixedBackground }">
+        <Nuxt />
+      </div>
     </div>
     <div class="footer">
 
@@ -24,7 +26,7 @@ import Navbar from '../components/elements/navbar/index.vue';
 export default {
   name: 'layout',
   components: {
-    Sidebar,Navbar
+    Sidebar, Navbar
 
   },
   computed: {
@@ -51,7 +53,7 @@ export default {
   },
   data() {
     return {
-      closeMenu: false,isOpen: false,
+      closeMenu: false, isOpen: false,
     };
   },
 };
@@ -59,6 +61,10 @@ export default {
 <style>
 .sidebar-component {
   height: 100vh;
-  flex: 1;
+}
+
+.main {
+  padding: 20px;
+  overflow: auto;
 }
 </style>

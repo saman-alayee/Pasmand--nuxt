@@ -1,7 +1,7 @@
 <template>
-  <b-container fluid class="p-4">
+  <b-container fluid class="">
     <b-row class="justify-content-center">
-      <b-col class="mt-5" lg="8" md="10" sm="12">
+      <b-col class="" lg="8" md="10" sm="12">
         <b-card no-body class="auth-card">
           <b-row>
             <b-col md="5" sm="12">
