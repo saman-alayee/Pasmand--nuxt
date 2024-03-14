@@ -79,7 +79,7 @@ body.background main .container {
   padding: 24px;
   position: relative;
   display: flex;
-  justify-content: space-between;
+  justify-content: start;
   flex-direction: column;
   align-items: center;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -90,12 +90,16 @@ body.background main .container {
   display: flex;
   justify-content: center;
   flex-direction: column;
+  cursor: pointer;
   align-items: center;
+  font-size: 20px;
+  font-weight: 400;
+  color: var(--primary-dark);
 }
 
 .sidebar-component-container .user-profile-container .img-container {
-  width: 32px;
-  height: 32px;
+  width: 45px;
+  height: 45px;
 }
 
 .sidebar-component-container .user-profile-container .img-container img {
@@ -151,10 +155,6 @@ body.background main .container {
   width: 30px;
 }
 
-.sidebar-component-container .rotate {
-  transform: rotate(0);
-}
-
 .openSidebar {
   width: 200px;
   padding: 48px;
@@ -178,7 +178,7 @@ body.background main .container {
   color: var(--text-dark);
   /* Change text color */
   border-radius: 8px;
-  width:6rem;
+  width: 6rem;
 }
 
 .custom-dropdown ul {
@@ -402,6 +402,18 @@ h4 {
   .auth-card .image-side {
     border-radius: 16px;
     height: 18rem;
+  }
+
+  .sidebar-component-container {
+    display: none;
+    transition: all 0.3s;
+  }
+
+  .openSidebar {
+    width: 200px;
+    padding: 48px;
+    transition: all 0.3s;
+    display: block;
   }
 
   .fixed-background {

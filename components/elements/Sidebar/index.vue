@@ -1,5 +1,11 @@
 <template>
   <div class="sidebar-component-container" :class="{ openSidebar: isOpen }">
+    <div class="user-profile-container" @click="goProfile">
+			<div class="img-container" :class="{ 'open-image-container': isOpen }">
+				<img src="../../../assets/img/login/balloon-lg.jpg" alt="" />
+			</div>
+			<p class="user-name mt-2" v-if="isOpen"> سامان علایی</p>
+		</div>
     <div class="menu-item-container mt-5">
       <div class="menu-item" @click="goRfp">
         <div class="icon-container">
@@ -36,6 +42,9 @@ export default {
   methods: {
     goRfp() {
       this.$router.push('/admin');
+    },
+    goProfile() {
+      this.$router.push('/profile');
     },
     logOut() {
       localStorage.removeItem('adminToken');
