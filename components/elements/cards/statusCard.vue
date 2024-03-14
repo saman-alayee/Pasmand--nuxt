@@ -6,7 +6,7 @@
       </div>
       <div class="card-body-container">
         <p class="title-text">{{ title }}</p>
-        <p class="count-text">{{ count }}</p>
+        <p class="count-text mt-3">{{ count }}</p>
       </div>
     </div>
   </template>
