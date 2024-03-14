@@ -5,12 +5,12 @@
         <Navbar :isOpen="isOpen" @toggle-sidebar="toggleSidebar"></Navbar>
       </div>
     </div>
-    <div class="d-flex">
+    <div class="d-flex flex-row sidebar-relative">
       <div class="sidebar-component" v-if="shouldShowSidebar">
         <Sidebar :isOpen="isOpen" />
       </div>
 
-      <div class="container-fluid" :class="{ 'main': true, 'fixed-background': shouldShowFixedBackground }">
+      <div class="container-fluid nuxt-absolute" :class="{ 'main': true, 'fixed-background': shouldShowFixedBackground }">
         <Nuxt />
       </div>
     </div>
@@ -61,6 +61,8 @@ export default {
 <style>
 .sidebar-component {
   height: 100vh;
+  min-height: 200vh;
+  z-index: 10000;
 }
 
 .main {
