@@ -1,7 +1,7 @@
 <template>
     <div>
         <b-card :title="title" :img-src="imgSrc" :img-alt="imgAlt" img-top tag="article" style="max-width: 20rem;"
-            class="mb-2 station-card">
+            class="mb-2 mt-2 station-card">
             <b-card-text>
                 {{ text }}
             </b-card-text>

@@ -472,6 +472,7 @@ h4 {
   border: 1px solid var(--text-dark);
 }
 
+
 .custom-table {
   width: 100%;
   border-collapse: collapse;
@@ -490,6 +491,42 @@ h4 {
   font-weight: bold;
   text-align: center;
 }
+/* price table */
+.custom-table-price {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.custom-table-price th,
+.custom-table-price td {
+  padding: 8px;
+  text-align: center;
+  color: black;
+  font-size: 16px;
+}
+
+.custom-table-price th {
+  background-color: #f2f2f2;
+  font-weight: bold;
+}
+
+.custom-table-price tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.custom-table-price tr:hover {
+  background-color: #ddd;
+}
+
+.custom-table-price tr td {
+  border: none;
+  /* Remove border from table cells */
+}
+
+.search-bar {
+  margin-bottom: 10px;
+}
+
 .dots-container {
   display: flex;
   justify-content: center;
@@ -531,7 +568,7 @@ h4 {
 
 .slider {
   width: 100%;
-  height: 40vh;
+  height: 45vh;
   margin: auto;
   display: flex;
   justify-content: center;
@@ -554,9 +591,7 @@ h4 {
   transition: transform 1s;
 }
 
-.slide img {
-  margin: 2rem 0 0 0;
-}
+
 /* responsive */
 @media (max-width: 992px) {
   .auth-card .image-side {

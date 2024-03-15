@@ -7,6 +7,7 @@
         :type="type"
         :value="inputValue"
         :placeholder="placeholder"
+        :style="{ textAlign: align }"
         :id="inputId"
         class="custom-input"
         @input="updateInputValue($event.target.value)"
@@ -32,6 +33,10 @@ export default {
     },
     value: {
       type: [String, Number],
+      default: ''
+    },
+    align: {
+      type: String,
       default: ''
     },
     iconSrc: {

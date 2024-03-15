@@ -1,7 +1,7 @@
 <template>
     <div>
         <b-row>
-            <b-col :key="index" lg="6" md="6" sm="12">
+            <b-col lg="6" md="6" sm="12">
                 <div class="mt-1">
                     <p class=" text-right h4">وضعیت سفارش ها</p>
                     <div class="separator mb-5"></div>
@@ -18,10 +18,10 @@
                         buttonClasses="btn-login btn btn-primary btn-md btn-multiple-state btn-shadow" />
                 </div>
             </b-col>
-            <b-col :key="index" lg="6" md="6" sm="12">
+            <b-col lg="6" md="6" sm="12">
                 <div class="card-container mb-4 mt-3">
                     <div class="card-title px-4">
-                        <p class=" text-right h5">جدیدترین سفارش ها</p>
+                        <p class=" text-right h5">نرخ متریال</p>
                     </div>
                     <div class="card-body">
                         <baseTable />
@@ -30,33 +30,68 @@
 
             </b-col>
         </b-row>
+        <div class="mt-1">
+            <p class=" text-right h4">وضعیت سفارش ها</p>
+            <div class="separator mb-5"></div>
+        </div>
+        <div class="card-container mb-4 mt-3">
+            <div class="card-body">
+                <priceTable />
+            </div>
+        </div>
         <div class="mt-5 d-flex justify-content-between">
-            <p class=" text-right h4">جدیدترین ایستگاه های فعال</p>
+            <p class=" text-right h4">جدیدترین آگهی ها </p>
             <NuxtLink to="/">
-                <p class=" text-right h6">مشاهده همه ایستگاه ها </p>
+                <p class=" text-right h6">مشاهده همه آگهی ها </p>
             </NuxtLink>
 
         </div>
         <div class="separator mb-5"></div>
-        <stationCarousel />
-        <div class="mt-5">
-                    <p class=" text-right h4">پیشنهاد های شما</p>
-                    <div class="separator mb-5"></div>
+        <div>
+            <advertisingCarousel />
+        </div>
+        <b-row>
+            <b-col lg="6" md="6" sm="12">
+                <div class="mt-5 d-flex justify-content-between">
+                    <p class=" text-right h4">جدیدترین آموزش ها </p>
+                    <NuxtLink to="/">
+                        <p class=" text-right h6">مشاهده همه آموزش ها </p>
+                    </NuxtLink>
+        
                 </div>
-        <accordion />
+        <div class="separator mb-5"></div>
+        <div>
+            <advertisingCarousel />
+        </div>
+        </b-col>
+        </b-row>
+
+
+
+
+        <div class="mt-5">
+            <p class=" text-right h4">پیشنهاد های شما</p>
+            <div class="separator mb-5"></div>
+        </div>
+        <div>
+            <accordion v-for="(item, index) in accordionItems" :key="index" :id="'accordion-' + (index + 1)"
+                :title="item.title" :content="item.content" :visible="item.expanded" @toggle="toggleAccordion(index)" />
+            <b-button class="text-right" block variant="light">ثبت پیشنهاد جدید</b-button>
+        </div>
 
     </div>
 </template>
 <script>
 import statusCard from '../../elements/cards/statusCard.vue';
 import baseTable from '../../elements/table/index.vue';
+import priceTable from '../../elements/table/priceTable.vue';
 import BaseButton from '../../elements/button/baseButton.vue'
-import stationCarousel from '../../elements/carousel/station.vue'
+import advertisingCarousel from '../../elements/carousel/advertising.vue'
 import accordion from '../../elements/accordion/index.vue'
 
 export default {
     components: {
-        statusCard, baseTable, BaseButton, stationCarousel,accordion
+        statusCard, baseTable, BaseButton, advertisingCarousel, accordion, priceTable
     },
     data() {
         return {
@@ -66,19 +101,28 @@ export default {
                 { icon: '<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-x-circle" viewBox="0 0 16 16"><path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/><path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708"/></svg>', title: 'رد شده ', count: 5 },
                 { icon: '<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-calendar" viewBox="0 0 16 16"><path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5M1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4z"/></svg>', title: 'تعداد کل سفارش ها ', count: 25 },
             ],
-            fields: [
-                { key: 'last_name', sortable: true },
-                { key: 'first_name', sortable: true },
-                { key: 'age', sortable: true },
-                { key: 'isActive', sortable: false }
-            ],
+
             items: [
                 { isActive: true, age: 40, first_name: 'Dickerson', last_name: 'Macdonald' },
                 { isActive: false, age: 21, first_name: 'Larsen', last_name: 'Shaw' },
                 { isActive: false, age: 89, first_name: 'Geneva', last_name: 'Wilson' },
                 { isActive: true, age: 38, first_name: 'Jami', last_name: 'Carney' }
             ],
+            accordionItems: [
+                { title: "آیتم اول", content: "محتوای آیتم اول", expanded: false },
+                { title: "آیتم دوم", content: "محتوای آیتم دوم", expanded: false },
+                { title: "آیتم سوم", content: "محتوای آیتم سوم", expanded: false },
+                { title: "آیتم اول", content: "محتوای آیتم اول", expanded: false },
+                { title: "آیتم دوم", content: "محتوای آیتم دوم", expanded: false },
+
+                // Add more accordion items as needed
+            ]
         };
+    },
+    methods: {
+        toggleAccordion(index) {
+            this.accordionItems[index].expanded = !this.accordionItems[index].expanded;
+        }
     }
 };
-</script>
+</script>../../elements/carousel/advertising.vue

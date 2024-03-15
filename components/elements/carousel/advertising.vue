@@ -6,10 +6,10 @@
         <button class="arrow--left" @click="slideRight">
           <img src="../../../assets/icons/arrow-left-circle.svg" alt="Previous" />
         </button>
-        <div class="slides" @click="goStation">
+        <div class="slides" @click="goAdvertising">
           <div v-for="(card, index) in cards" :key="index" class="slide"
             :style="{ transform: `translateX(${(index - curSlide) * 110}%)` }">
-            <stationCard :title="card.title" :text="card.description" :img-src="card.imgSrc" :img-alt="card.imgAlt" />
+            <advertisingCard :title="card.title" :text="card.description" :img-src="card.imgSrc" :img-alt="card.imgAlt" />
            
           </div>
         </div>
@@ -26,11 +26,11 @@
 </template>
 
 <script>
-import stationCard from '../cards/stationCard.vue';
+import advertisingCard from '../cards/advertisingCard.vue';
 
 export default {
   components: {
-    stationCard
+    advertisingCard
   },
   data() {
     return {
@@ -41,59 +41,59 @@ export default {
       touchEndX: null,
       cards: [
         {
-          title: "نام ایستگاه",
+          title: "نام آگهی",
           imgSrc: "https://picsum.photos/600/300/?image=25",
           imgAlt: "Image 1",
           buttonLink: "#",
-          buttonText: "مشاهده ایستگاه",
+          buttonText: "مشاهده آگهی",
           description: "لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است."
         },
         {
-          title: "نام ایستگاه",
+          title: "نام آگهی",
           imgSrc: "https://picsum.photos/600/300/?image=26",
           imgAlt: "Image 2",
           buttonLink: "#",
-          buttonText: "مشاهده ایستگاه",
+          buttonText: "مشاهده آگهی",
           description: "لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است."
         },
         {
-          title: "نام ایستگاه",
+          title: "نام آگهی",
           imgSrc: "https://picsum.photos/600/300/?image=27",
           imgAlt: "Image 2",
           buttonLink: "#",
-          buttonText: "مشاهده ایستگاه",
+          buttonText: "مشاهده آگهی",
           description: "لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است."
         },
         {
-          title: "نام ایستگاه",
+          title: "نام آگهی",
           imgSrc: "https://picsum.photos/600/300/?image=28",
           imgAlt: "Image 2",
           buttonLink: "#",
-          buttonText: "مشاهده ایستگاه",
+          buttonText: "مشاهده آگهی",
           description: "لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است."
         },
         {
-          title: "نام ایستگاه",
+          title: "نام آگهی",
           imgSrc: "https://picsum.photos/600/300/?image=29",
           imgAlt: "Image 2",
           buttonLink: "#",
-          buttonText: "مشاهده ایستگاه",
+          buttonText: "مشاهده آگهی",
           description: "لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است."
         },
         {
-          title: "نام ایستگاه",
+          title: "نام آگهی",
           imgSrc: "https://picsum.photos/600/300/?image=20",
           imgAlt: "Image 2",
           buttonLink: "#",
-          buttonText: "مشاهده ایستگاه",
+          buttonText: "مشاهده آگهی",
           description: "لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است."
         },
         {
-          title: "نام ایستگاه",
+          title: "نام آگهی",
           imgSrc: "https://picsum.photos/600/300/?image=21",
           imgAlt: "Image 2",
           buttonLink: "#",
-          buttonText: "مشاهده ایستگاه",
+          buttonText: "مشاهده آگهی",
           description: "لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است."
         },
         // Add more card data as needed
@@ -111,7 +111,7 @@ export default {
         this.curSlide--;
       }
     },
-    goStation() {
+    goAdvertising() {
       this.$router.push('/profile');
     },
 
