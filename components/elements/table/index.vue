@@ -56,24 +56,49 @@ export default {
 </script>
 
 <style scoped>
-::-webkit-scrollbar {
-    width: 10px;
+.table-container {
+    overflow: auto;
 }
 
-/* Track */
-::-webkit-scrollbar-track {
+/* Webkit Scrollbars */
+.table-container::-webkit-scrollbar {
+    width: 5px;
+}
+
+.table-container::-webkit-scrollbar-track {
     background: var(--background-color);
 }
 
-/* Handle */
-::-webkit-scrollbar-thumb {
+.table-container::-webkit-scrollbar-thumb {
     background: var(--primary-dark);
+    border-radius: 8px;
+}
+
+.table-container::-webkit-scrollbar-thumb:hover {
+    background: var(--primary-dark);
+}
+
+/* Firefox Scrollbars */
+.table-container {
+    scrollbar-width: thin;
+    scrollbar-color: var(--primary-dark) var(--background-color);
+}
+
+.table-container::-webkit-scrollbar {
     width: 5px;
     border-radius: 8px;
 }
 
-/* Handle on hover */
-::-webkit-scrollbar-thumb:hover {
-    background: var(--primary-dark);
+.table-container::-webkit-scrollbar-track {
+    background: var(--background-color);
+}
+
+.table-container::-webkit-scrollbar-thumb {
+    background-color: var(--primary-dark);
+    border-radius: 8px;
+}
+
+.table-container::-webkit-scrollbar-thumb:hover {
+    background-color: var(--primary-dark);
 }
 </style>

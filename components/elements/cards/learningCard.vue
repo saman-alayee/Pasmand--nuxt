@@ -3,7 +3,9 @@
         <b-card :img-src="imgSrc" :img-alt="imgAlt" img-top tag="article" style="max-width: 20rem;"
             class="mb-2 mt-2 station-card">
             <b-card-text>
-                {{ text.length(20) }}
+                {{ text.length > 250 ? text.slice(0, 250) + '...' : text }}  <NuxtLink to="/">
+                        <p class="text-primary">مشاهده آموزش</p>
+                    </NuxtLink>
             </b-card-text>
         </b-card>
     </div>

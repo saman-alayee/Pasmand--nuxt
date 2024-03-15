@@ -72,7 +72,7 @@ body.background main .container {
 }
 
 .sidebar-component-container {
-  width: 60px;
+  width: 75px;
   height: 100%;
   background-color: white;
   transition: all 0.3s;
@@ -110,7 +110,7 @@ body.background main .container {
 }
 
 .sidebar-component-container .menu-item-container {
-  width: 135%;
+  width: 120%;
 }
 
 .sidebar-component-container .menu-item-container .menu-item {
@@ -124,14 +124,15 @@ body.background main .container {
   display: flex;
   justify-content: start;
   align-items: center;
-  font-size: 20px;
-  font-weight: 400;
+  font-size: 16px;
+  font-weight: 500;
 }
 
 .sidebar-component-container .menu-item-container .menu-item:hover {
   background-color: var(--primary-dark);
   color: white;
   border-radius: 8px;
+  display: flex;
   justify-content: center;
 }
 
@@ -395,7 +396,100 @@ h4 {
   text-decoration: none;
   color: black;
 }
+.ps-container {
+  position: relative;
+}
 
+.ps {
+  overflow: auto !important;
+  overflow-anchor: none;
+  -ms-overflow-style: none;
+  touch-action: auto;
+  -ms-touch-action: auto;
+}
+
+.dashboard-donut-chart,
+.dashboard-donut-chart .chart-container,
+.dashboard-list-with-user,
+.dashboard-logs {
+  height: 417px;
+}
+/*  */
+.ps::-webkit-scrollbar {
+  width: 5px;
+  border-radius: 8px;
+}
+
+.ps::-webkit-scrollbar-track {
+  background: var(--background-color);
+}
+
+.ps::-webkit-scrollbar-thumb {
+  background: var(--text-dark);
+  border-radius: 8px;
+}
+
+.ps::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-dark);
+}
+
+/* Firefox Scrollbars */
+.ps {
+  scrollbar-width: thin;
+  scrollbar-color: var(--primary-dark) var(--background-color);
+}
+
+.ps::-webkit-scrollbar {
+  width: 5px;
+  border-radius: 8px;
+}
+
+.ps::-webkit-scrollbar-track {
+  background: var(--background-color);
+}
+
+.ps::-webkit-scrollbar-thumb {
+  background-color: var(--primary-dark);
+  border-radius: 8px;
+}
+
+.ps::-webkit-scrollbar-thumb:hover {
+  background-color: var(--primary-dark);
+}
+@media (max-width: 991px) {
+  .list-thumbnail.xsmall {
+      height: 60px;
+      font-size: 1rem;
+      width: 60px;
+  }
+}
+
+.list-thumbnail.xsmall {
+  height: 60px;
+  font-size: 1rem;
+  width: 60px;
+}
+
+@media (max-width: 991px) {
+  .list-thumbnail {
+      height: 60px;
+      font-size: 1rem;
+      width: 60px;
+  }
+}
+
+.list-thumbnail {
+  height: 85px;
+  -o-object-fit: cover;
+  object-fit: cover;
+}
+
+.img-thumbnail,
+.list-thumbnail {
+  border-radius: 0.1rem;
+  padding: 0;
+  border: initial;
+}
 .card-container {
   background-color: white;
   border-radius: 8px;
@@ -420,6 +514,7 @@ h4 {
   border: none;
   overflow: hidden;
   box-shadow: 0 1px 15px rgba(0, 0, 0, .04), 0 1px 6px rgba(0, 0, 0, .04);
+  height: 18.3rem;
 }
 
 .station-card p,h4 {

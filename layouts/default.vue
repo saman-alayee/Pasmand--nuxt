@@ -60,7 +60,7 @@ export default {
 </script>
 <style>
 .sidebar-component {
-  height: 100vh;
+  height: 375vh;
   min-height: 200vh;
   z-index: 10000;
 }
