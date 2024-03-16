@@ -21,7 +21,7 @@
             <b-col lg="6" md="6" sm="12">
                 <div class="card-container mb-4 mt-3">
                     <div class="card-title pt-2 px-4">
-                        <p class=" text-right h5">نرخ متریال</p>
+                        <p class=" text-right h5">آخرین سفارش ها</p>
                     </div>
                     <div class="card-body">
                         <baseTable />

@@ -33,7 +33,7 @@ export default {
     },
     shouldShowSidebar() {
       // Define an array of page names where you want to show the sidebar
-      const pagesWithSidebar = ['dashboard']; // Replace with actual page names
+      const pagesWithSidebar = ['dashboard','dashboard-order']; // Replace with actual page names
       console.log(this.$route.name)
       return pagesWithSidebar.includes(this.$route.name);
 
@@ -58,8 +58,8 @@ export default {
 </script>
 <style>
 .sidebar-component {
-  height: 383vh;
-  min-height: 200vh;
+  height: 100vh;
+  min-height: 100vh;
   z-index: 10000;
 }
 
@@ -70,8 +70,7 @@ export default {
 
 @media (max-width: 768px) {
   .sidebar-component {
-  height: 100%;
-  min-height: 200vh;
+  height: 100vh;
   z-index: 10000;
 }
 
