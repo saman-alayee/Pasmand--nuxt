@@ -44,7 +44,9 @@ label {
 :focus {
   outline: initial;
 }
-
+.footer  {
+  background-color: var(--background-color);
+}
 body {
   font-family: "yekan", sans-serif;
   font-size: 0.8rem;
@@ -52,6 +54,7 @@ body {
   direction: rtl;
   color: var(--primary-color);
   background: var(--background-color);
+  overflow-x: hidden;
 }
 
 body.background {
@@ -354,7 +357,16 @@ h4 {
   cursor: pointer;
   color: gray;
 }
-
+.bg-blue {
+  background-color: var(--primary-dark);
+}
+.btn-accordion {
+  background-color: var(--primary-dark);
+  color: white;
+  font-size: 18px;
+  font-weight: 500;
+  border: none;
+}
 .navbar-container {
   background-color: white;
   padding: 10px 20px;

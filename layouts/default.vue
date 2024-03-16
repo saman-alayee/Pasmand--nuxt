@@ -14,9 +14,6 @@
         <Nuxt />
       </div>
     </div>
-    <div class="footer">
-
-    </div>
   </div>
 </template>
 <script>
@@ -60,7 +57,7 @@ export default {
 </script>
 <style>
 .sidebar-component {
-  height: 375vh;
+  height: 379vh;
   min-height: 200vh;
   z-index: 10000;
 }

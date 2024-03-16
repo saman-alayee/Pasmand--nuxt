@@ -1,9 +1,10 @@
 <template>
-    <div class="div">
-        <div class="text-center">
-            <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است.</p>
+    <footer id="sticky-footer" class="flex-shrink-0 py-1 mt-5 border-top border-secondary text-dark-50">
+        <div class="container text-center mt-2 text-dark">
+            <small>Copyright &copy; Your Website</small>
         </div>
-    </div>
+    </footer>
+
 </template>
 
 <script>
@@ -17,15 +18,7 @@ export default {
 </script>
 
 <style scoped>
-.div {
-    background-color: var(--primary-dark);
-    color: white;
-    padding: 20px 0;
-    width: 100%;
-    margin-top: auto;
-}
 
-.footer p {
-    margin: 0;
-}
+
+
 </style>

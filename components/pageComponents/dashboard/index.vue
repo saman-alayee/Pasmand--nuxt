@@ -90,6 +90,9 @@
                 :title="item.title" :content="item.content" :visible="item.expanded" @toggle="toggleAccordion(index)" />
             <b-button class="text-right" block variant="light">ثبت پیشنهاد جدید</b-button>
         </div>
+        <div>
+            <Footer/>
+        </div>
 
     </div>
 </template>
@@ -102,10 +105,11 @@ import BaseButton from '../../elements/button/baseButton.vue'
 import advertisingCarousel from '../../elements/carousel/advertising.vue'
 import learningCarousel from '../../elements/carousel/learning.vue'
 import accordion from '../../elements/accordion/index.vue'
+import Footer from '../../elements/footer/footer.vue';
 
 export default {
     components: {
-        stationCard, statusCard, baseTable, BaseButton, advertisingCarousel, accordion, priceTable, learningCarousel
+        stationCard, statusCard, baseTable, BaseButton, advertisingCarousel, accordion, priceTable, learningCarousel,Footer
     },
     data() {
         return {
