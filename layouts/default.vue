@@ -10,7 +10,8 @@
         <Sidebar :isOpen="isOpen" />
       </div>
 
-      <div class="container-fluid nuxt-absolute" :class="{ 'main': true, 'fixed-background': shouldShowFixedBackground }">
+      <div class="container-fluid nuxt-absolute"
+        :class="{ 'main': true, 'fixed-background': shouldShowFixedBackground }">
         <Nuxt />
       </div>
     </div>
@@ -57,7 +58,7 @@ export default {
 </script>
 <style>
 .sidebar-component {
-  height: 379vh;
+  height: 383vh;
   min-height: 200vh;
   z-index: 10000;
 }
@@ -65,5 +66,14 @@ export default {
 .main {
   padding: 20px;
   overflow: auto;
+}
+
+@media (max-width: 768px) {
+  .sidebar-component {
+  height: 100%;
+  min-height: 200vh;
+  z-index: 10000;
+}
+
 }
 </style>
