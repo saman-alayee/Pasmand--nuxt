@@ -1,5 +1,9 @@
 <template>
     <div class="mt-5">
+        <div class="mt-1">
+            <p class=" text-right h4">وضعیت سفارش ها</p>
+            <div class="separator mb-5"></div>
+        </div>
         <div class=" d-flex justify-content-between">
 
             <div class="filter-dropdown">
@@ -11,9 +15,9 @@
                 </select>
             </div>
             <BaseButton @click="goCreate" buttonText="ثبت سفارش جدید"
-                        buttonClasses="btn-login btn btn-primary btn-md btn-multiple-state btn-shadow" />
+                buttonClasses="btn-login btn btn-primary btn-md btn-multiple-state btn-shadow" />
         </div>
-        <div class="table-container-price mt-4">
+        <div class="table-container-price mt-4 " style="overflow-x: auto;">
             <table class="custom-table-price">
                 <thead>
                     <tr>
@@ -44,15 +48,19 @@
         </div>
         <b-pagination class="mt-4 d-flex justify-content-center" v-model="page" pills :total-rows="filteredItems.length"
             :per-page="perPage" aria-controls="my-table"></b-pagination>
+        <div>
+            <Footer />
+        </div>
     </div>
 </template>
 
 <script>
-  import BaseButton from '../../elements/button/baseButton.vue'
+import BaseButton from '../../elements/button/baseButton.vue'
+import Footer from '../../elements/footer/footer.vue';
 
 export default {
     components: {
-          BaseButton
+        BaseButton, Footer
     },
     data() {
         return {
