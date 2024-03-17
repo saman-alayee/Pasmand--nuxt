@@ -33,7 +33,7 @@ export default {
     },
     shouldShowSidebar() {
       // Define an array of page names where you want to show the sidebar
-      const pagesWithSidebar = ['dashboard','dashboard-order','dashboard-order-create','dashboard-priceMaterial','dashboard-comment','dashboard-profile']; // Replace with actual page names
+      const pagesWithSidebar = ['dashboard','dashboard-learning','dashboard-order','dashboard-order-create','dashboard-priceMaterial','dashboard-comment','dashboard-profile']; // Replace with actual page names
       console.log(this.$route.name)
       return pagesWithSidebar.includes(this.$route.name);
 
