@@ -137,16 +137,16 @@ export default {
       this.$router.push('/dashboard');
     },
     goProfile() {
-      this.$router.push('/profile');
+      this.$router.push('/dashboard/profile');
     },
     goHistoryOrder() {
-      this.$router.push('/dashboard');
+      this.$router.push('/dashboard/order');
     },
     goOrder() {
-      this.$router.push('/profile');
+      this.$router.push('/dashboard/order/create');
     },
     goPrice() {
-      this.$router.push('/dashboard');
+      this.$router.push('/dashboard/priceMaterial');
     },
     goAdvertising() {
       this.$router.push('/profile');
@@ -158,7 +158,7 @@ export default {
       this.$router.push('/profile');
     },
     goComment() {
-      this.$router.push('/profile');
+      this.$router.push('/dashboard/comment');
     },
 
 

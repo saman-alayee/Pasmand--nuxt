@@ -168,4 +168,4 @@ export default {
         }
     }
 };
-</script>../../elements/carousel/advertising.vue
+</script>
