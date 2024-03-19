@@ -23,7 +23,7 @@
                     <BaseInput label="رمز یک بار مصرف" type="text" iconSrc="/icons/key.svg" v-model="oneTimePassword" />
                     <div class="d-flex justify-content-end align-items-center">
                       <BaseButton buttonText="تأیید رمز عبور"
-                        buttonClasses="btn-login btn btn-primary btn-md btn-multiple-state btn-shadow" />
+                        buttonClasses="btn-login btn btn-success btn-md btn-multiple-state btn-shadow" />
                     </div>
                   </b-form>
                 </b-card-body>

@@ -22,7 +22,7 @@
                 </b-col>
                 <b-col class="mt-3" lg="4" md="4" sm="4" cols="8">
                     <BaseButton @click="goCreate" buttonText="ثبت سفارش جدید"
-                        buttonClasses="btn-login btn btn-primary btn-md btn-multiple-state btn-shadow" />
+                        buttonClasses="btn-login btn btn-success btn-md btn-multiple-state btn-shadow" />
                 </b-col>
             </b-row>
         </div>

@@ -12,10 +12,10 @@
                     </b-col>
                 </b-row>
                 <div class="d-flex justify-content-around mt-4">
-                    <BaseButton buttonText="مشاهده وضعیت سفارش ها"
-                        buttonClasses="btn-login btn btn-primary btn-md btn-multiple-state btn-shadow" />
-                    <BaseButton buttonText="ثبت سفارش جدید"
-                        buttonClasses="btn-login btn btn-primary btn-md btn-multiple-state btn-shadow" />
+                    <BaseButton @click="goHistoryOrder" buttonText="مشاهده وضعیت سفارش ها"
+                        buttonClasses="btn-login btn btn-success btn-md btn-multiple-state btn-shadow" />
+                    <BaseButton @click="goOrder" buttonText="ثبت سفارش جدید"
+                        buttonClasses="btn-login btn btn-success btn-md btn-multiple-state btn-shadow" />
                 </div>
             </b-col>
             <b-col lg="6" md="6" sm="12">
@@ -52,9 +52,9 @@
         </div>
         <b-row>
             <b-col lg="6" md="6" sm="12">
-             _   <div class="mt-5 d-flex justify-content-between">
+                _ <div class="mt-5 d-flex justify-content-between">
                     <p class=" text-right h4">جدیدترین آموزش ها </p>
-                    <NuxtLink to="/">
+                    <NuxtLink to="/dashboard/learning">
                         <p class=" text-right h6">مشاهده همه آموزش ها </p>
                     </NuxtLink>
 
@@ -68,11 +68,19 @@
                 <div class="mt-5">
                     <div class="card-container mt-5">
                         <div class="card-title pt-2 px-4">
-                            <p class="text-right h5">جدیدترین ایستگاه ها</p>
+                            <div class="mt-5 d-flex justify-content-between">
+                                <p class="text-right h5">جدیدترین ایستگاه ها</p>
+                                <NuxtLink to="/dashboard/learning">
+                                    <p class=" text-right h6">مشاهده همه ایستگاه ها </p>
+                                </NuxtLink>
+
+                            </div>
+
                         </div>
                         <div class="card-body ps-container scroll dashboard-list-with-user ps ps--active-y">
-                        <stationCard v-for="(station, index) in stations" :key="index" :imageSrc="station.icon"
-                            :title="station.title" :description="station.description" /></div>
+                            <stationCard v-for="(station, index) in stations" :key="index" :imageSrc="station.icon"
+                                :title="station.title" :description="station.description" />
+                        </div>
                     </div>
                 </div>
             </b-col>
@@ -88,10 +96,10 @@
         <div>
             <accordion v-for="(item, index) in accordionItems" :key="index" :id="'accordion-' + (index + 1)"
                 :title="item.title" :content="item.content" :visible="item.expanded" @toggle="toggleAccordion(index)" />
-            <b-button class="text-right" block variant="light">ثبت پیشنهاد جدید</b-button>
+            <b-button @click="goComment" class="text-right" block variant="light">ثبت پیشنهاد جدید</b-button>
         </div>
         <div>
-            <Footer/>
+            <Footer />
         </div>
 
     </div>
@@ -109,7 +117,7 @@ import Footer from '../../elements/footer/footer.vue';
 
 export default {
     components: {
-        stationCard, statusCard, baseTable, BaseButton, advertisingCarousel, accordion, priceTable, learningCarousel,Footer
+        stationCard, statusCard, baseTable, BaseButton, advertisingCarousel, accordion, priceTable, learningCarousel, Footer
     },
     data() {
         return {
@@ -129,15 +137,15 @@ export default {
                     icon: "/img/login/balloon-lg.jpg",
                     title: "مطهره تقوی",
                     description: "لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است."
-                },{
+                }, {
                     icon: "/img/login/balloon-lg.jpg",
                     title: "مطهره تقوی",
                     description: "لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است."
-                },{
+                }, {
                     icon: "/img/login/balloon-lg.jpg",
                     title: "مطهره تقوی",
                     description: "لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است."
-                },{
+                }, {
                     icon: "/img/login/balloon-lg.jpg",
                     title: "مطهره تقوی",
                     description: "لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است."
@@ -165,7 +173,15 @@ export default {
     methods: {
         toggleAccordion(index) {
             this.accordionItems[index].expanded = !this.accordionItems[index].expanded;
-        }
+        },
+        goHistoryOrder() {
+            this.$router.push('/dashboard/order');
+        },
+        goOrder() {
+            this.$router.push('/dashboard/order/create');
+        }, goComment() {
+            this.$router.push('/dashboard/comment');
+        },
     }
 };
 </script>

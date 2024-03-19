@@ -10,8 +10,8 @@
                 </svg>
             </div>
             <div class="navbar-nav-container">
-                <div class="pt-1">
-                    <img width="100" src="../../../assets/logos/black.svg" alt="">
+                <div class="">
+                    <img width="100" src="../../../assets/img/logos/logo.png" alt="">
                 </div>
             </div>
             <div>

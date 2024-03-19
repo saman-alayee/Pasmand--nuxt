@@ -29,7 +29,7 @@
                   <div class="d-flex justify-content-between align-items-center">
                       <router-link tag="a" to="/forgetPassword" class="white">رمز عبورت یادت رفته؟</router-link>.
                     <BaseButton buttonText="ورود"
-                      buttonClasses="btn-login btn btn-primary btn-md btn-multiple-state btn-shadow" />
+                      buttonClasses="btn-login btn btn-success btn-md btn-multiple-state btn-shadow" />
                   </div>
                 </b-form>
               </b-card-body>

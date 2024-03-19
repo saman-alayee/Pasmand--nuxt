@@ -19,7 +19,7 @@
                             <baseInput type="text" align="right" placeholder="موضوع" v-model="title" />
                             <baseInput isTextarea="true" type="textarea" align="right" placeholder="توضیحات" v-model="description" />
                             <BaseButton @click="validateForm" buttonText="ثبت نظر "
-                                buttonClasses="btn-login btn btn-primary btn-md btn-multiple-state btn-shadow" />
+                                buttonClasses="btn-login btn btn-success btn-md btn-multiple-state btn-shadow" />
                             <BaseButton @click="closeComment" buttonText="بستن "
                                 buttonClasses="btn-close btn btn-danger btn-md btn-multiple-state btn-shadow" />
                         </div>
@@ -29,7 +29,7 @@
 
             <div class="d-flex justify-content-center">
                 <BaseButton @click="openComment" buttonText="ثبت نظر جدید"
-                    buttonClasses="btn-login btn btn-primary btn-md btn-multiple-state btn-shadow" />
+                    buttonClasses="btn-login btn btn-success btn-md btn-multiple-state btn-shadow" />
 
             </div>
             <b-row class="text-right text-dark h6">

@@ -15,7 +15,7 @@
                 </select>
             </div>
             <BaseButton @click="goCreate" buttonText="ثبت سفارش جدید"
-                buttonClasses="btn-login btn btn-primary btn-md btn-multiple-state btn-shadow" />
+                buttonClasses="btn-login btn btn-success btn-md btn-multiple-state btn-shadow" />
         </div>
         <div class="table-container-price mt-4 " style="overflow-x: auto;">
             <table class="custom-table-price">

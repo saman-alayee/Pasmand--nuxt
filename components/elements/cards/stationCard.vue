@@ -39,13 +39,13 @@ export default {
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-    background: var(--primary-dark);
+    background: var(--green-base);
     width: 3px;
     border-radius: 8px;
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-    background: var(--primary-dark);
+    background: var(--green-base);
 }
 </style>

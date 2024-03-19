@@ -10,7 +10,7 @@
                 <img src="../../../assets/img/login/balloon-lg.jpg" alt="" />
             </div>
             <div>
-                <baseInputFile class="mt-2" buttonText="بارگذاری عکس" buttonClass="btn btn-primary btn-login"
+                <baseInputFile class="mt-2" buttonText="بارگذاری عکس" buttonClass="btn btn-success btn-login"
                     @file-selected="handleFileSelected" />
             </div>
         </div>
@@ -42,7 +42,7 @@
                 </b-row>
                 <div class="d-flex justify-content-end align-items-center">
                     <BaseButton buttonText="ثبت نام" @click="validateForm"
-                        buttonClasses="btn-login btn btn-primary btn-md btn-multiple-state btn-shadow" />
+                        buttonClasses="btn-login btn btn-success btn-md btn-multiple-state btn-shadow" />
                 </div>
             </div>
         </div>

@@ -23,7 +23,7 @@
                     <BaseInput label="موبایل" type="tel" iconSrc="/icons/telephone.svg" v-model="mobile" />
                     <div class="d-flex justify-content-end align-items-center">
                       <BaseButton buttonText="ارسال رمز یک بار مصرف"
-                        buttonClasses="btn-login btn btn-primary btn-md btn-multiple-state btn-shadow" />
+                        buttonClasses="btn-login btn btn-success btn-md btn-multiple-state btn-shadow" />
                     </div>
                   </b-form>
                 </b-card-body>

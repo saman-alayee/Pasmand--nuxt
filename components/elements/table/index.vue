@@ -70,18 +70,18 @@ export default {
 }
 
 .table-container::-webkit-scrollbar-thumb {
-    background: var(--primary-dark);
+    background: var(--green-base);
     border-radius: 8px;
 }
 
 .table-container::-webkit-scrollbar-thumb:hover {
-    background: var(--primary-dark);
+    background: var(--green-base);
 }
 
 /* Firefox Scrollbars */
 .table-container {
     scrollbar-width: thin;
-    scrollbar-color: var(--primary-dark) var(--background-color);
+    scrollbar-color: var(--green-base) var(--background-color);
 }
 
 .table-container::-webkit-scrollbar {
@@ -94,11 +94,11 @@ export default {
 }
 
 .table-container::-webkit-scrollbar-thumb {
-    background-color: var(--primary-dark);
+    background-color: var(--green-base);
     border-radius: 8px;
 }
 
 .table-container::-webkit-scrollbar-thumb:hover {
-    background-color: var(--primary-dark);
+    background-color: var(--green-base);
 }
 </style>

@@ -3,7 +3,7 @@
     <div class="search-bar d-flex justify-content-between">
       <BaseInput class="text-right w-50" placeholder="نام متریال خود را جستجو کنید" type="text"
         iconSrc="/icons/search.svg" align="right" v-model="searchQuery" />
-      <NuxtLink to="/">
+      <NuxtLink to="/dashboard/priceMaterial">
         <p class=" text-right h6 mt-2">مشاهده کامل نرخ متریال </p>
       </NuxtLink>
     </div>
@@ -104,18 +104,18 @@ export default {
 }
 
 .table-container-price::-webkit-scrollbar-thumb {
-  background: var(--primary-dark);
+  background: var(--green-base);
   border-radius: 8px;
 }
 
 .table-container-price::-webkit-scrollbar-thumb:hover {
-  background: var(--primary-dark);
+  background: var(--green-base);
 }
 
 /* Firefox Scrollbars */
 .table-container-price {
   scrollbar-width: thin;
-  scrollbar-color: var(--primary-dark) var(--background-color);
+  scrollbar-color: var(--green-base) var(--background-color);
 }
 
 .table-container-price::-webkit-scrollbar {
@@ -128,11 +128,11 @@ export default {
 }
 
 .table-container-price::-webkit-scrollbar-thumb {
-  background-color: var(--primary-dark);
+  background-color: var(--green-base);
   border-radius: 8px;
 }
 
 .table-container-price::-webkit-scrollbar-thumb:hover {
-  background-color: var(--primary-dark);
+  background-color: var(--green-base);
 }
 </style>

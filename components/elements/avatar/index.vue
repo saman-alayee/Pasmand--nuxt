@@ -24,8 +24,11 @@
     data() {
       return {
         items: [
+          { title: 'ویرایش پروفایل', route: '/dashboard/profile' },
+          { title: 'لیست سفارشات', route: '/dashboard/order' },
+          { title: 'ثبت نظر', route: '/dashboard/comment' },
+          { title: ' آموزش ها', route: '/dashboard/learning' },
           { title: 'لیست آگهی ها ', route: '/profile' },
-          { title: 'ویرایش پروفایل', route: '/profile' },
           { title: 'ایستگاه های جمع آوری', route: '/cart' }
         ]
       };

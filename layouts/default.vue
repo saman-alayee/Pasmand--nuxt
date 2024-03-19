@@ -40,7 +40,7 @@ export default {
     },
     shouldShowFixedBackground() {
       // Define an array of page names where you want to apply the fixed-background class
-      const pagesWithFixedBackground = ['login', 'register', 'forgetPassword', 'confirmPassword']; // Pages with fixed background
+      const pagesWithFixedBackground = ['login', 'register', 'forgetPassword', 'confirmPassword',null]; // Pages with fixed background
       return pagesWithFixedBackground.includes(this.$route.name);
     }
   },
