@@ -52,7 +52,7 @@
         </div>
         <b-row>
             <b-col lg="6" md="6" sm="12">
-                <div class="mt-5 d-flex justify-content-between">
+             _   <div class="mt-5 d-flex justify-content-between">
                     <p class=" text-right h4">جدیدترین آموزش ها </p>
                     <NuxtLink to="/">
                         <p class=" text-right h6">مشاهده همه آموزش ها </p>

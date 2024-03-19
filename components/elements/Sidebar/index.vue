@@ -152,7 +152,7 @@ export default {
       this.$router.push('/profile');
     },
     goLearning() {
-      this.$router.push('/learn');
+      this.$router.push('/dashboard/learning');
     },
     goStation() {
       this.$router.push('/profile');
