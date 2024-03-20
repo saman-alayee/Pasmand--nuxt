@@ -33,7 +33,7 @@ export default {
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
     // https://go.nuxtjs.dev/bootstrap
-    "bootstrap-vue/nuxt", 'vue-sweetalert2/nuxt'
+    "bootstrap-vue/nuxt", 'vue-sweetalert2/nuxt','nuxt-leaflet'
   ],
 
   // Build Configuration: https://go.nuxtjs.dev/config-build

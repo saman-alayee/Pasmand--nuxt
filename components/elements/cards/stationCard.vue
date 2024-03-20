@@ -6,6 +6,7 @@
             <p class="font-weight-medium text-right mb-0">{{ title }}</p>
             <p class="text-muted text-right mb-0 text-small">{{ description }}</p>
         </div>
+        
     </div>
 </template>
 
