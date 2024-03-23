@@ -1,7 +1,7 @@
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
   router: {
-    middleware: 'redirect'
+    middleware: "redirect",
   },
   head: {
     title: "Pasmand",
@@ -20,7 +20,9 @@ export default {
 
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: ["~/assets/css/app-rtl.css", "~/assets/css/main.css"],
-
+  axios: {
+    baseURL: "https://mgzp.ir/api",
+  },
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [],
 
@@ -33,17 +35,20 @@ export default {
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
     // https://go.nuxtjs.dev/bootstrap
-    "bootstrap-vue/nuxt", 'vue-sweetalert2/nuxt','nuxt-leaflet'
+    "bootstrap-vue/nuxt",
+    "vue-sweetalert2/nuxt",
+    "nuxt-leaflet",
+    '@nuxtjs/axios',
   ],
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
     loaders: {
       sass: {
-        implementation: require('sass'),
+        implementation: require("sass"),
       },
       scss: {
-        implementation: require('sass'),
+        implementation: require("sass"),
       },
     },
   },

@@ -6,8 +6,8 @@
         </div>
         <div>
             <b-row>
-                <b-col class="mt-3" v-for="(item, index) in items" :key="index" lg="6" md="6" sm="12" cols="12">
-                    <orderCard :title="item.title" :fee="item.fee" />
+                <b-col class="mt-3" v-for="(item, index) in materials" :key="index" lg="6" md="6" sm="12" cols="12">
+                    <orderCard :title="item.title" :fee="item.price" />
 
                 </b-col>
             </b-row>
@@ -53,6 +53,19 @@ export default {
                 // Add more items as needed
             ]
         };
-    }
+    },
+    computed: {
+    materials() {
+      return this.$store.getters["material/loadedMaterials"];
+    },
+   
+  },
+    mounted() {
+    // Dispatch the action to fetch materials
+    this.$store.dispatch("material/getMaterials").then(() => {
+      // Posts have been loaded
+      console.log(this.$axios.defaults.baseURL);
+    });
+  },
 }
 </script>

@@ -1,9 +1,10 @@
 <template>
     <div>
-        <b-card :img-src="imgSrc" :title="title" :img-alt="imgAlt" img-top tag="article" style="max-width: 20rem;"
+        <b-card :img-src="imgSrc" :title="title" :img-alt="imgAlt" img-top tag="article" :style="{ maxWidth: cardWidth }"
             class="mb-2 mt-1 station-card">
             <b-card-text>
-                {{ text.length > 150 ? text.slice(0, 150) + '...' : text }} <NuxtLink to="/">
+                {{ text.length > 150 ? text.slice(0, 150) + '...' : text }} 
+                <NuxtLink :to="linkDestination">
                     <p class="text-primary">مشاهده آموزش</p>
                 </NuxtLink>
             </b-card-text>
@@ -12,9 +13,7 @@
 </template>
 
 <script>
-
 export default {
-
     props: {
         title: {
             type: String,
@@ -36,6 +35,10 @@ export default {
             type: String,
             default: "20rem"
         },
+        linkDestination: {
+            type: [String, Number],
+            default: "/" // Default destination path
+        }
     }
 };
 </script>
