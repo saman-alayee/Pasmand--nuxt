@@ -25,7 +25,8 @@
                   <BaseInput label="موبایل" type="tel" iconSrc="/icons/telephone.svg" v-model="mobile" />
                   <BaseInput label="تاریخ تولد" type="date" v-model="birthdate" />
                   <BaseInput label="رمز عبور" type="password" iconSrc="/icons/password.svg" v-model="password" />
-                  <BaseInput label="تکرار رمز عبور" type="password" iconSrc="/icons/password.svg" v-model="confirmPassword" />
+                  <BaseInput label="تکرار رمز عبور" type="password" iconSrc="/icons/password.svg"
+                    v-model="confirmPassword" />
                   <div class="d-flex justify-content-end align-items-center">
                     <BaseButton buttonText="ثبت نام"
                       buttonClasses="btn-login btn btn-success btn-md btn-multiple-state btn-shadow" />

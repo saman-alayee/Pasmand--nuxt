@@ -1,37 +1,51 @@
 <template>
-    <div>
-      <div class="card-container-comment text-right text-dark">
-        <div class="card-header bg-success text-white d-flex justify-content-between">
-          <h5>{{ title }}</h5>
-          <p>{{ date }}</p>
+  <div>
+    <div class="card-container-comment text-right text-dark">
+      <div class="card-header bg-success text-white d-flex justify-content-between">
+        <h5>{{ title }}</h5>
+        <p>{{ date }}</p>
+      </div>
+      <div class="card-body text-justify">
+        <div class="star-icon justify-content-end">
+          <p style="padding: 3px;">امتیاز شما </p>
+          <div class="pr-2" v-for="(star, index) in 5" :key="index">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" :fill="index < goldStars ? 'gold' : 'currentColor'"
+              class="bi bi-star-fill" viewBox="0 0 16 16">
+              <path
+                d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
+            </svg>
+          </div>
         </div>
-        <div class="card-body text-justify">
-          <p class="card-text">{{ content }}</p>
-        </div>
+
+        <p class="card-text">{{ content }}</p>
       </div>
     </div>
-  </template>
-  
-  <script>
-  export default {
-    props: {
-      title: {
-        type: String,
-        default: ''
-      },
-      date: {
-        type: String,
-        default: ''
-      },
-      content: {
-        type: String,
-        default: ''
-      }
+  </div>
+</template>
+
+<script>
+export default {
+  props: {
+    title: {
+      type: String,
+      default: ''
+    },
+    date: {
+      type: String,
+      default: ''
+    },
+    content: {
+      type: String,
+      default: ''
+    },
+    goldStars: {
+      type: Number,
+      default: 0
     }
-  };
-  </script>
-  
-  <style scoped>
-  /* Add any necessary styling here */
-  </style>
-  
+  }
+};
+</script>
+
+<style scoped>
+/* Add any necessary styling here */
+</style>

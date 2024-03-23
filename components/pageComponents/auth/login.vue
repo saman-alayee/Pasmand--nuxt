@@ -23,7 +23,7 @@
                   {{ error }}
                 </div>
                 <b-form @submit.prevent="validateForm">
-                  <BaseInput label="ایمیل" type="text" iconSrc="/icons/email.svg" v-model="email" />
+                  <BaseInput label="شماره تلفن" type="text" iconSrc="/icons/telephone.svg" v-model="mobile" />
                   <BaseInput label="رمز عبور" type="password" iconSrc="/icons/password.svg" v-model="password" />
 
                   <div class="d-flex justify-content-between align-items-center">
@@ -52,7 +52,7 @@ export default {
   },
   data() {
     return {
-      email: '',
+      mobile: '',
       password: '',
       error: ''
     };
@@ -62,21 +62,18 @@ export default {
       // Clear previous errors
       this.error = '';
 
-      // Check if email is empty
-      if (!this.email.trim()) {
-        this.error = 'لطفاً ایمیل خود را وارد کنید';
+      // Check if mobile is empty
+      if (!this.mobile.trim()) {
+        this.error = 'لطفاً شماره تلفن خود را وارد کنید';
         return;
       }
-
-      // Check if email contains @ symbol
-      if (!this.email.includes('@')) {
-        this.error = 'ایمیل وارد شده معتبر نیست';
-        return;
-      }
-
       // Check if password is empty
       if (!this.password.trim()) {
         this.error = 'لطفاً رمز عبور خود را وارد کنید';
+        return;
+      }
+       if (!this.isValidMobile(this.mobile)) {
+        this.error = 'شماره موبایل وارد شده معتبر نیست';
         return;
       }
 
@@ -88,6 +85,11 @@ export default {
 
       // If everything is valid, proceed with the desired action
       // For example, you can make an API call to authenticate the user
+    },
+    isValidMobile(mobile) {
+      // Regular expression to validate mobile number
+      const mobileRegex = /^09\d{9}$/;
+      return mobileRegex.test(mobile);
     }
   }
 };

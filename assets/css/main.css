@@ -423,7 +423,11 @@ h4 {
   cursor: pointer;
   color: gray;
 }
-
+.star-icon {
+  display: flex;
+  color: gray;
+  cursor: pointer;
+}
 .bg-blue {
   background-color: var(--green-base);
 }
