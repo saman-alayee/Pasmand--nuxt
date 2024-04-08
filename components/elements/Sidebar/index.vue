@@ -149,13 +149,13 @@ export default {
       this.$router.push('/dashboard/priceMaterial');
     },
     goAdvertising() {
-      this.$router.push('/profile');
+      this.$router.push('/dashboard/advertising');
     },
     goLearning() {
       this.$router.push('/dashboard/learning');
     },
     goStation() {
-      this.$router.push('/profile');
+      this.$router.push('/dashboard/stations');
     },
     goComment() {
       this.$router.push('/dashboard/comment');

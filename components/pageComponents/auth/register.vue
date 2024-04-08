@@ -17,13 +17,14 @@
               <div class="logo-image p-5">
                 <img src="../../../assets/logos/black.svg" alt="">
               </div>
-              <b-card-body class="p-5" title="ثبت نام">
+              <b-card-body class="p-3" title="ثبت نام">
                 <div class="empty-alert" v-if="error">{{ error }}</div>
                 <b-form @submit.prevent="validateForm">
-                  <BaseInput label="نام و نام خانوادگی" type="text" iconSrc="/icons/person.svg" v-model="username" />
+                  <BaseInput label="نام  " type="text" iconSrc="/icons/person.svg" v-model="name" />
+                  <BaseInput label="  نام خانوادگی" type="text" iconSrc="/icons/person.svg" v-model="family" />
                   <BaseInput label="ایمیل" type="email" iconSrc="/icons/email.svg" v-model="email" />
                   <BaseInput label="موبایل" type="tel" iconSrc="/icons/telephone.svg" v-model="mobile" />
-                  <BaseInput label="تاریخ تولد" type="date" v-model="birthdate" />
+                  <!-- <BaseInput label="تاریخ تولد" type="date" v-model="birthdate" /> -->
                   <BaseInput label="رمز عبور" type="password" iconSrc="/icons/password.svg" v-model="password" />
                   <BaseInput label="تکرار رمز عبور" type="password" iconSrc="/icons/password.svg"
                     v-model="confirmPassword" />
@@ -52,10 +53,10 @@ export default {
   },
   data() {
     return {
-      username: '',
+      name: '',
+      family: '',
       email: '',
       mobile: '',
-      birthdate: '',
       password: '',
       confirmPassword: '',
       error: ''
@@ -65,9 +66,12 @@ export default {
     validateForm() {
       this.error = '';
 
-      if (!this.username.trim()) {
+      if (!this.name.trim()) {
         this.error = 'لطفاً نام خود را وارد کنید';
-      } else if (!this.email.trim()) {
+      } else if (!this.family.trim()) {
+        this.error = 'لطفاً نام خانوادگی خود را وارد کنید';
+      }
+      else if (!this.email.trim()) {
         this.error = 'لطفاً ایمیل خود را وارد کنید';
       } else if (!this.isValidEmail(this.email)) {
         this.error = 'ایمیل وارد شده معتبر نیست';
@@ -75,16 +79,21 @@ export default {
         this.error = 'لطفاً شماره موبایل خود را وارد کنید';
       } else if (!this.isValidMobile(this.mobile)) {
         this.error = 'شماره موبایل وارد شده معتبر نیست';
-      } else if (!this.birthdate) {
-        this.error = 'لطفاً تاریخ تولد خود را وارد کنید';
-      } else if (!this.password.trim()) {
+      }  else if (!this.password.trim()) {
         this.error = 'لطفاً رمز عبور خود را وارد کنید';
       } else if (this.password.length < 8) {
         this.error = 'رمز عبور باید حداقل ۸ کاراکتر باشد';
       } else if (this.password !== this.confirmPassword) {
         this.error = 'رمز عبور و تکرار آن مطابقت ندارند';
       } else {
-        // Proceed with form submission
+        this.$store.dispatch("register/registerUser", {
+          name: this.name,
+          family: this.family,
+          mobile: this.mobile,
+          email: this.email,
+          password: this.password,
+          password_confirmation: this.confirmPassword,
+        });
       }
     },
     isValidEmail(email) {

@@ -416,7 +416,9 @@ h4 {
   border-color: red;
   /* Example: change border color to red when input is empty */
 }
-
+.icon-table {
+  cursor: pointer;
+}
 .open-btn {
   padding: 8px;
   border-radius: 14px;

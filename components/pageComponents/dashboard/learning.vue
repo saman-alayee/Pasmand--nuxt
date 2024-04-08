@@ -7,9 +7,7 @@
         <div class="search-bar d-flex justify-content-between">
             <BaseInput class="text-right w-50" placeholder="نام آموزش خود را جستجو کنید" type="text"
                 iconSrc="/icons/search.svg" align="right" v-model="searchQuery" />
-            <NuxtLink to="/">
-                <p class=" text-right h6 mt-2">مشاهده کامل نرخ متریال </p>
-            </NuxtLink>
+            
         </div>
         <b-row class="text-right">
             <b-col v-for="(card, index) in paginatedCards" :key="index" class="mt-3" lg="3" md="4" sm="6" cols="12">

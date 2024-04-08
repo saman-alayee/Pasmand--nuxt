@@ -83,8 +83,12 @@ export default {
         return;
       }
 
-      // If everything is valid, proceed with the desired action
-      // For example, you can make an API call to authenticate the user
+      else {
+        this.$store.dispatch("register/loginUser", {
+          mobile: this.mobile,
+          password: this.password,
+        });
+      }
     },
     isValidMobile(mobile) {
       // Regular expression to validate mobile number

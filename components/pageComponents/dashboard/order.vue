@@ -4,6 +4,31 @@
             <p class=" text-right h4">وضعیت سفارش ها</p>
             <div class="separator mb-5"></div>
         </div>
+        <!-- modal -->
+        <BaseModal class ref="modalInfo">
+                <div class="popup-content mt-3" style="display: block;">
+                    <div class="popup-container">
+                        <div class="popup-content-box">
+                            <div class="mt-1 pr-1">
+                                <p class=" text-right h4">جزییات سفارش</p>
+                                <div class="separator mb-4"></div>
+                            </div>
+                            <div class="text-justify">
+                                <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. </p>
+                                <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. </p>
+                                <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. </p>
+
+                            </div>
+                            
+                           
+                            
+                            <BaseButton @click="closeInfo" buttonText="بستن "
+                                buttonClasses="btn-close btn btn-danger btn-md btn-multiple-state btn-shadow" />
+                        </div>
+                    </div>
+                </div>
+            </BaseModal>
+             <!-- end modal -->
         <div class=" d-flex justify-content-between">
 
             <div class="filter-dropdown">
@@ -21,6 +46,7 @@
             <table class="custom-table-price">
                 <thead>
                     <tr>
+                        <th></th>
                         <th>شماره</th>
                         <th>وزن بر حسب کیلوگرم</th>
                         <th>جنس</th>
@@ -31,6 +57,7 @@
                 </thead>
                 <tbody>
                     <tr v-for="(item, index) in paginatedItems" :key="index">
+                        <td  ><img class="icon-table" @click="openInfo" src="../../../assets/icons/info-circle-fill.svg" alt=""></td>
                         <td>{{ (page - 1) * perPage + index + 1 }}</td>
                         <td>{{ item.field1 }}</td>
                         <td>{{ item.field2 }}</td>
@@ -57,10 +84,11 @@
 <script>
 import BaseButton from '../../elements/button/baseButton.vue'
 import Footer from '../../elements/footer/footer.vue';
+import BaseModal from '../../elements/modal/index.vue'
 
 export default {
     components: {
-        BaseButton, Footer
+        BaseButton, Footer,BaseModal
     },
     data() {
         return {
@@ -122,6 +150,13 @@ export default {
         },
         goCreate() {
             this.$router.push('/dashboard/order/create');
+        },
+         // Info modal
+         openInfo() {
+            this.$refs.modalInfo.openModal();
+        },
+        closeInfo() {
+            this.$refs.modalInfo.closeModal();
         },
     }
 };
