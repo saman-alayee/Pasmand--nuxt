@@ -21,7 +21,7 @@ export default {
         },
         imgSrc: {
             type: String,
-            default: "https://picsum.photos/600/300/?image=25"
+            default: "https://picsum.photos/600/300/?image=26"
         },
         imgAlt: {
             type: String,

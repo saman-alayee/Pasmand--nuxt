@@ -89,15 +89,15 @@
 
 
 
-        <div class="mt-5">
+        <!-- <div class="mt-5">
             <p class=" text-right h4">پیشنهاد های شما</p>
             <div class="separator mb-5"></div>
-        </div>
+        </div>`
         <div>
             <accordion v-for="(item, index) in accordionItems" :key="index" :id="'accordion-' + (index + 1)"
                 :title="item.title" :content="item.content" :visible="item.expanded" @toggle="toggleAccordion(index)" />
             <b-button @click="goComment" class="text-right" block variant="light">ثبت پیشنهاد جدید</b-button>
-        </div>
+        </div> -->
         <div>
             <Footer />
         </div>

@@ -15,7 +15,7 @@
             </b-col>
 
         </b-row>
-        <b-pagination class="mt-4 d-flex justify-content-center" v-model="page" :total-rows="filteredCards.length"
+        <b-pagination class="mt-4 d-flex justify-content-center" v-model="page"  @click="fetchAllnews(page)" :total-rows="filteredCards.length"
             :per-page="perPage" aria-controls="my-table"></b-pagination>
     </div>
 </template>
@@ -32,77 +32,77 @@ export default {
             searchQuery: '',
             page: 1,
             perPage: 12,
-            cards: [
-        {
-          title: "نام آگهی",
-          imgSrc: "https://picsum.photos/600/300/?image=25",
-          imgAlt: "Image 1",
-          buttonLink: "#",
-          buttonText: "مشاهده آگهی",
-          description: "لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است."
-        },
-        {
-          title: "نام آگهی",
-          imgSrc: "https://picsum.photos/600/300/?image=26",
-          imgAlt: "Image 2",
-          buttonLink: "#",
-          buttonText: "مشاهده آگهی",
-          description: "لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است."
-        },
-        {
-          title: "نام آگهی",
-          imgSrc: "https://picsum.photos/600/300/?image=27",
-          imgAlt: "Image 2",
-          buttonLink: "#",
-          buttonText: "مشاهده آگهی",
-          description: "لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است."
-        },
-        {
-          title: "نام آگهی",
-          imgSrc: "https://picsum.photos/600/300/?image=28",
-          imgAlt: "Image 2",
-          buttonLink: "#",
-          buttonText: "مشاهده آگهی",
-          description: "لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است."
-        },
-        {
-          title: "نام آگهی",
-          imgSrc: "https://picsum.photos/600/300/?image=29",
-          imgAlt: "Image 2",
-          buttonLink: "#",
-          buttonText: "مشاهده آگهی",
-          description: "لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است."
-        },
-        {
-          title: "نام آگهی",
-          imgSrc: "https://picsum.photos/600/300/?image=20",
-          imgAlt: "Image 2",
-          buttonLink: "#",
-          buttonText: "مشاهده آگهی",
-          description: "لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است."
-        },
-        {
-          title: "نام آگهی",
-          imgSrc: "https://picsum.photos/600/300/?image=21",
-          imgAlt: "Image 2",
-          buttonLink: "#",
-          buttonText: "مشاهده آگهی",
-          description: "لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است."
-        },
-        // Add more card data as needed
-      ]
+    //         cards: [
+    //     {
+    //       title: "نام آگهی",
+    //       imgSrc: "https://picsum.photos/600/300/?image=25",
+    //       imgAlt: "Image 1",
+    //       buttonLink: "#",
+    //       buttonText: "مشاهده آگهی",
+    //       description: "لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است."
+    //     },
+    //     {
+    //       title: "نام آگهی",
+    //       imgSrc: "https://picsum.photos/600/300/?image=26",
+    //       imgAlt: "Image 2",
+    //       buttonLink: "#",
+    //       buttonText: "مشاهده آگهی",
+    //       description: "لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است."
+    //     },
+    //     {
+    //       title: "نام آگهی",
+    //       imgSrc: "https://picsum.photos/600/300/?image=27",
+    //       imgAlt: "Image 2",
+    //       buttonLink: "#",
+    //       buttonText: "مشاهده آگهی",
+    //       description: "لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است."
+    //     },
+    //     {
+    //       title: "نام آگهی",
+    //       imgSrc: "https://picsum.photos/600/300/?image=28",
+    //       imgAlt: "Image 2",
+    //       buttonLink: "#",
+    //       buttonText: "مشاهده آگهی",
+    //       description: "لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است."
+    //     },
+    //     {
+    //       title: "نام آگهی",
+    //       imgSrc: "https://picsum.photos/600/300/?image=29",
+    //       imgAlt: "Image 2",
+    //       buttonLink: "#",
+    //       buttonText: "مشاهده آگهی",
+    //       description: "لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است."
+    //     },
+    //     {
+    //       title: "نام آگهی",
+    //       imgSrc: "https://picsum.photos/600/300/?image=20",
+    //       imgAlt: "Image 2",
+    //       buttonLink: "#",
+    //       buttonText: "مشاهده آگهی",
+    //       description: "لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است."
+    //     },
+    //     {
+    //       title: "نام آگهی",
+    //       imgSrc: "https://picsum.photos/600/300/?image=21",
+    //       imgAlt: "Image 2",
+    //       buttonLink: "#",
+    //       buttonText: "مشاهده آگهی",
+    //       description: "لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است."
+    //     },
+    //     // Add more card data as needed
+    //   ]
         };
     },
     computed: {
-        tutorial() {
-            return this.$store.getters["tutorial/loadedTutorials"] || [];
+        news() {
+            return this.$store.getters["news/loadedAllnews"] || [];
         },
         filteredCards() {
             const query = this.searchQuery.trim().toLowerCase();
             if (!query) {
-                return this.cards;
+                return this.news;
             }
-            return this.cards.filter(card =>
+            return this.news.filter(card =>
                 card.title.toLowerCase().includes(query)
             );
         },
@@ -112,13 +112,26 @@ export default {
             return this.filteredCards.slice(startIndex, endIndex);
         },
     },
-    mounted() {
-        // Dispatch the action to fetch tuotrials
-        this.$store.dispatch("tutorial/getTutorials").then(() => {
-            // Posts have been loaded
-            console.log(this.$axios.defaults.baseURL);
-        });
+    methods: {
+        async fetchAllnews(page) {
+            console.log(page)
+            this.loading = true;
+            try {
+                await this.$store.dispatch("news/getAllnews", page);
+            } catch (error) {
+                console.error('Error fetching news:', error);
+            } finally {
+                this.loading = false;
+            }
+        }
     },
+    mounted() {
+        // Fetch news when the component is mounted
+        this.fetchAllnews(this.page);
+        console.log(this.$store.getters["news/loadedAllnews"])
+
+        
+    }
 
 };
 </script>

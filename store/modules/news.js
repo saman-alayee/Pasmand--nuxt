@@ -1,32 +1,32 @@
 import axios from "axios";
 import Swal from "sweetalert2";
 
-const tutorials = {
+const news = {
   namespaced: true,
   state: {
-    tutorials: [],
+    news: [],
   },
   getters: {
-    loadedTutorials(state) {
-      return state.tutorials;
+    loadedAllnews(state) {
+      return state.news;
     },
   },
   mutations: {
-    setTutorials(state, myTutorials) {
-      state.tutorials = myTutorials;
+    setAllnews(state, myAllnews) {
+      state.news = myAllnews;
     },
   },
   actions: {
-    async getTutorials({ commit }, page = 1) {
+    async getAllnews({ commit }, page = 1) {
       try {
         const response = await axios.get(
-          `${this.$axios.defaults.baseURL}/tutorials`,
+          `${this.$axios.defaults.baseURL}/news`,
           {
             params: { page } // Pass the pagination parameter
           }
         );
-        commit("setTutorials", response.data.data.Tutorials); // Use the correct path to access tutorials
-        console.log(response.data.data.Tutorials)
+        commit("setAllnews", response.data.data.brnads); // Use the correct path to access news
+        console.log(response.data.data.brnads)
 
       } catch (error) {
         Swal.fire({
@@ -40,4 +40,4 @@ const tutorials = {
   },
 };
 
-export default tutorials;
+export default news;

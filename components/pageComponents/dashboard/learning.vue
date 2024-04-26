@@ -10,13 +10,13 @@
             
         </div>
         <b-row class="text-right">
-            <b-col v-for="(card, index) in paginatedCards" :key="index" class="mt-3" lg="3" md="4" sm="6" cols="12">
-                <learningCard :title="card.title" :text="card.text" :img-src="card.image" :link-destination="'/dashboard/learning/' + card.id.toString()"
+            <b-col v-for="(card, index) in filteredCards" :key="index" class="mt-3" lg="3" md="4" sm="6" cols="12">
+                <learningCard :title="card.title" :text="card.text" :img-src="card.imgSrc" :link-destination="'/dashboard/learning/' + card.id.toString()"
                     :img-alt="card.imgAlt" />
             </b-col>
 
         </b-row>
-        <b-pagination class="mt-4 d-flex justify-content-center" v-model="page" :total-rows="filteredCards.length"
+        <b-pagination class="mt-4 d-flex justify-content-center" v-model="page"  @click="fetchTutorials(page)"  :total-rows="filteredCards.length"
             :per-page="perPage" aria-controls="my-table"></b-pagination>
     </div>
 </template>
@@ -37,7 +37,7 @@ export default {
     },
     computed: {
         tutorial() {
-            return this.$store.getters["tutorial/loadedTutorials"] || [];
+            return this.$store.getters["tutorial/loadedTutorials"];
         },
         filteredCards() {
             const query = this.searchQuery.trim().toLowerCase();
@@ -54,13 +54,27 @@ export default {
             return this.filteredCards.slice(startIndex, endIndex);
         },
     },
-    mounted() {
-        // Dispatch the action to fetch tuotrials
-        this.$store.dispatch("tutorial/getTutorials").then(() => {
-            // Posts have been loaded
-            console.log(this.$axios.defaults.baseURL);
-        });
+    methods: {
+        async fetchTutorials(page) {
+            console.log(page)
+            this.loading = true;
+            try {
+                await this.$store.dispatch("tutorial/getTutorials", page);
+            } catch (error) {
+                console.error('Error fetching tutorials:', error);
+                this.error = 'Error fetching tutorials. Please try again later.';
+            } finally {
+                this.loading = false;
+            }
+        }
     },
+    mounted() {
+        // Fetch tutorials when the component is mounted
+        this.fetchTutorials(this.page);
+        console.log(this.$store.getters["tutorial/loadedTutorials"])
+
+        
+    }
 
 };
 </script>

@@ -9,11 +9,14 @@ const login = {
     email: "",
     name:"",
     isAuth: false,
+    citizenId:"",
   },
   mutations: {
     setToken(state, accessToken) {
       state.token = accessToken;
-      state.isAuth = true;
+    },
+    setId(state, id) {
+      state.citizenId = id;
     },
    
   },
@@ -40,8 +43,10 @@ const login = {
             position: "top",
           });
           commit("setToken", response.data.message);
+          commit("setId", response.data.data.id);
           Cookies.set("Token", response.data.message);
-          // this.$router.push({ path: "profile" });
+          Cookies.set("citizenId", response.data.data.id);
+          this.$router.push({ path: "dashboard" });
   
         } 
         catch (error) {
@@ -76,7 +81,7 @@ const login = {
           toast: true,
           position: "top",
         });
-        // this.$router.push({ path: "dashboard" });
+       this.$router.push({ path: "dashboard" });
         console.log(response.data.message)
         
         commit("setToken", response.data.message);
