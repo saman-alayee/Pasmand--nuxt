@@ -6,29 +6,32 @@
         </div>
         <!-- modal -->
         <BaseModal class ref="modalInfo">
-                <div class="popup-content mt-3" style="display: block;">
-                    <div class="popup-container">
-                        <div class="popup-content-box">
-                            <div class="mt-1 pr-1">
-                                <p class=" text-right h4">جزییات سفارش</p>
-                                <div class="separator mb-4"></div>
-                            </div>
-                            <div class="text-justify">
-                                <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. </p>
-                                <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. </p>
-                                <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. </p>
-
-                            </div>
-                            
-                           
-                            
-                            <BaseButton @click="closeInfo" buttonText="بستن "
-                                buttonClasses="btn-close btn btn-danger btn-md btn-multiple-state btn-shadow" />
+            <div class="popup-content mt-3" style="display: block;">
+                <div class="popup-container">
+                    <div class="popup-content-box">
+                        <div class="mt-1 pr-1">
+                            <p class=" text-right h4">جزییات سفارش</p>
+                            <div class="separator mb-4"></div>
                         </div>
+                        <div class="text-justify">
+                            <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک
+                                است. </p>
+                            <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک
+                                است. </p>
+                            <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک
+                                است. </p>
+
+                        </div>
+
+
+
+                        <BaseButton @click="closeInfo" buttonText="بستن "
+                            buttonClasses="btn-close btn btn-danger btn-md btn-multiple-state btn-shadow" />
                     </div>
                 </div>
-            </BaseModal>
-             <!-- end modal -->
+            </div>
+        </BaseModal>
+        <!-- end modal -->
         <div class=" d-flex justify-content-between">
 
             <div class="filter-dropdown">
@@ -48,22 +51,23 @@
                     <tr>
                         <th></th>
                         <th>شماره</th>
-                        <th>وزن بر حسب کیلوگرم</th>
-                        <th>جنس</th>
                         <th>شماره شفارش</th>
-                        <th>قیمت</th>
+                        <th>شهروند</th>
+                        <th>ایستگاه</th>
+                        <th>تاریخ</th>
                         <th>وضعیت</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr v-for="(item, index) in paginatedItems" :key="index">
-                        <td  ><img class="icon-table" @click="openInfo" src="../../../assets/icons/info-circle-fill.svg" alt=""></td>
+                        <td><img class="icon-table" @click="openInfo" src="../../../assets/icons/info-circle-fill.svg"
+                                alt=""></td>
                         <td>{{ (page - 1) * perPage + index + 1 }}</td>
-                        <td>{{ item.field1 }}</td>
-                        <td>{{ item.field2 }}</td>
-                        <td>{{ item.field3 }}</td>
-                        <td> <b>{{ item.field5 }}</b> تومان</td>
-                        <td v-if="item.status == 'success'"><b-button class="w-100" size="sm" variant="success">موفق
+                        <td>{{ item.order_code }}</td>
+                        <td>{{ item.citizen }}</td>
+                        <td>{{ item.station }}</td>
+                        <td>{{ convertToPersianDate(item.created_at) }}</td>
+                        <td v-if="item.status == 1"><b-button class="w-100" size="sm" variant="success">موفق
                             </b-button></td>
                         <td v-if="item.status == 'failed'"><b-button class="w-100" size="sm"
                                 variant="danger">ناموفق</b-button></td>
@@ -88,28 +92,11 @@ import BaseModal from '../../elements/modal/index.vue'
 
 export default {
     components: {
-        BaseButton, Footer,BaseModal
+        BaseButton, Footer, BaseModal
     },
     data() {
         return {
-            items: [
-                { field1: 'لورم ایپسوم', field2: 'لورم ایپسوم', field3: 'لورم ایپسوم', field4: 'لورم ایپسوم', field5: ' 2521', status: 'failed' },
-                { field1: 'لورم ایپسوم', field2: 'لورم ایپسوم', field3: 'لورم ایپسوم', field4: 'لورم ایپسوم', field5: '5858', status: 'success' },
-                { field1: 'لورم ایپسوم', field2: 'لورم ایپسوم', field3: 'لورم ایپسوم', field4: 'لورم ایپسوم', field5: '854224', status: 'pending' },
-                { field1: 'لورم ایپسوم', field2: 'لورم ایپسوم', field3: 'لورم ایپسوم', field4: 'لورم ایپسوم', field5: '2332', status: 'failed' },
-                { field1: 'لورم ایپسوم', field2: 'لورم ایپسوم', field3: 'لورم ایپسوم', field4: 'لورم ایپسوم', field5: '34', status: 'success' },
-                { field1: 'لورم ایپسوم', field2: 'لورم ایپسوم', field3: 'لورم ایپسوم', field4: 'لورم ایپسوم', field5: '344', status: 'pending' }, { field1: 'لورم ایپسوم', field2: 'لورم ایپسوم', field3: 'لورم ایپسوم', field4: 'لورم ایپسوم', field5: ' 477474', status: 'failed' },
-                { field1: 'لورم ایپسوم', field2: 'لورم ایپسوم', field3: 'لورم ایپسوم', field4: 'لورم ایپسوم', field5: '4554', status: 'success' },
-                { field1: 'لورم ایپسوم', field2: 'لورم ایپسوم', field3: 'لورم ایپسوم', field4: 'لورم ایپسوم', field5: ' 41', status: 'pending' }, { field1: 'لورم ایپسوم', field2: 'لورم ایپسوم', field3: 'لورم ایپسوم', field4: 'لورم ایپسوم', field5: ' 4774', status: 'failed' },
-                { field1: 'لورم ایپسوم', field2: 'لورم ایپسوم', field3: 'لورم ایپسوم', field4: 'لورم ایپسوم', field5: ' 1747', status: 'success' }, { field1: 'لورم ایپسوم', field2: 'لورم ایپسوم', field3: 'لورم ایپسوم', field4: 'لورم ایپسوم', field5: ' 4774', status: 'success' },
-                { field1: 'لورم ایپسوم', field2: 'لورم ایپسوم', field3: 'لورم ایپسوم', field4: 'لورم ایپسوم', field5: '4774 ', status: 'success' },
-                { field1: 'لورم ایپسوم', field2: 'لورم ایپسوم', field3: 'لورم ایپسوم', field4: 'لورم ایپسوم', field5: '75575 ', status: 'success' },
-                { field1: 'لورم ایپسوم', field2: 'لورم ایپسوم', field3: 'لورم ایپسوم', field4: 'لورم ایپسوم', field5: ' 58585', status: 'success' },
-                { field1: 'لورم ایپسوم', field2: 'لورم ایپسوم', field3: 'لورم ایپسوم', field4: 'لورم ایپسوم', field5: '77222828 ', status: 'success' },
 
-                { field1: 'لورم ایپسوم', field2: 'لورم ایپسوم', field3: 'لورم ایپسوم', field4: 'لورم ایپسوم', field5: '2552525252 ', status: 'pending' },
-                // Add more items as needed
-            ],
             searchQuery: '',
             page: 1,
             perPage: 10,
@@ -117,8 +104,11 @@ export default {
         };
     },
     computed: {
+        orders() {
+            return this.$store.getters["orders/loadedOrders"];
+        },
         filteredItems() {
-            let filtered = this.items;
+            let filtered = this.orders;
 
             // Apply search query filter
             const query = this.searchQuery.trim().toLowerCase();
@@ -151,13 +141,35 @@ export default {
         goCreate() {
             this.$router.push('/dashboard/order/create');
         },
-         // Info modal
-         openInfo() {
+        // Info modal
+        openInfo() {
             this.$refs.modalInfo.openModal();
         },
         closeInfo() {
             this.$refs.modalInfo.closeModal();
         },
+        convertToPersianDate(dateString) {
+            const gregorianDate = new Date(dateString);
+            return gregorianDate.toLocaleDateString('fa-IR');
+        },
+        async fetchTutorials(page) {
+            console.log(page)
+            this.loading = true;
+            try {
+                await this.$store.dispatch("orders/getOrders", page);
+            } catch (error) {
+                console.error('Error fetching orders:', error);
+                this.error = 'Error fetching orders. Please try again later.';
+            } finally {
+                this.loading = false;
+            }
+        }
+    },
+    mounted() {
+        this.fetchTutorials(this.page);
+        console.log(this.$store.getters["orders/loadedOrders"])
+
+
     }
 };
 </script>

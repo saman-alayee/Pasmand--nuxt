@@ -5,6 +5,7 @@ import tutorial from "./modules/tutorial";
 import register from "./modules/register";
 import comment from "./modules/comment";
 import news from "./modules/news";
+import orders from "./modules/orders";
 
 
 
@@ -19,7 +20,8 @@ const createStore = () => {
       tutorial,
       register,
       comment,
-      news
+      news,
+      orders
     },
   });
 };

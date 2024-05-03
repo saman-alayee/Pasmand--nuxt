@@ -51,10 +51,9 @@ const login = {
         } 
         catch (error) {
           Swal.fire({
-            title: "Error!",
-            text: "There is a problem, please try again",
+            text: "شماره تلفن یا رمز عبور شما اشتباه می باشد .",
             icon: "error",
-            confirmButtonText: "Ok",
+            confirmButtonText: "باشه",
           });
         }
       },

@@ -51,10 +51,10 @@ const coin = {
         } 
         catch (error) {
           Swal.fire({
-            title: "Error!",
-            text: "There is a problem, please try again",
+            title: "ارور :( ",
+            text: "مشکلی پیش آمده است لطفا دوباره امتحان کنید.",
             icon: "error",
-            confirmButtonText: "Ok",
+            confirmButtonText: "باشه",
           });
           console.log(error);
 
@@ -77,10 +77,10 @@ const coin = {
         commit("setComments", response.data.data.comments); // Use response.data.data to get the actual coin data
       } catch (error) {
         Swal.fire({
-          title: "Error!",
-          text: "There is a problem, please try again",
+          title: "ارور :( ",
+          text: "مشکلی پیش آمده است لطفا دوباره امتحان کنید.",
           icon: "error",
-          confirmButtonText: "Ok",
+          confirmButtonText: "باشه",
         });
         console.log(error);
       }
