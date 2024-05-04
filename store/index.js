@@ -6,6 +6,7 @@ import register from "./modules/register";
 import comment from "./modules/comment";
 import news from "./modules/news";
 import orders from "./modules/orders";
+import station from "./modules/stations";
 
 
 
@@ -21,7 +22,8 @@ const createStore = () => {
       register,
       comment,
       news,
-      orders
+      orders,
+      station
     },
   });
 };
