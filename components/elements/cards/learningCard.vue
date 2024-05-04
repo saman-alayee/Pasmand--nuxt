@@ -42,3 +42,9 @@ export default {
     }
 };
 </script>
+<style scoped>
+.station-card img {
+    max-width: 100%;
+    height: 50%;
+    object-fit: cover;
+}</style>

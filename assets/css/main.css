@@ -667,6 +667,23 @@ h2 {
   text-align: right;
   color: #000000;
 }
+.single-card {
+  background-color: white;
+  border-radius: 8px;
+  border: none;
+  overflow: hidden;
+  box-shadow: 0 1px 15px rgba(0, 0, 0, .04), 0 1px 6px rgba(0, 0, 0, .04);
+  padding: 64px;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.single-card p,
+h2 {
+  text-align: right;
+  color: #000000;
+}
 .text--container {
   text-align: justify;
   color: #000000;

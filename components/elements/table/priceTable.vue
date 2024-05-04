@@ -3,31 +3,55 @@
     <div class="search-bar d-flex justify-content-between">
       <BaseInput class="text-right w-50" placeholder="نام متریال خود را جستجو کنید" type="text"
         iconSrc="/icons/search.svg" align="right" v-model="searchQuery" />
-      <NuxtLink to="/dashboard/priceMaterial">
+      <!-- <NuxtLink to="/dashboard/priceMaterial">
         <p class=" text-right h6 mt-2">مشاهده کامل نرخ متریال </p>
-      </NuxtLink>
+      </NuxtLink> -->
     </div>
+    <!-- modal -->
+
+    <!-- end modal -->
     <div class="table-container-price-price">
       <table class="custom-table-price">
         <thead>
           <tr>
             <th>شماره</th>
-            <th>وزن بر حسب کیلوگرم</th>
             <th>جنس</th>
-            <th>شماره شفارش</th>
             <th>قیمت</th>
+            <th> توضیحات</th>
           </tr>
         </thead>
         <tbody>
           <tr v-for="(item, index) in paginatedItems" :key="index">
+
             <td>{{ (page - 1) * perPage + index + 1 }}</td>
-            <td>{{ item.field1 }}</td>
-            <td>{{ item.field2 }}</td>
-            <td>{{ item.field3 }}</td>
-            <td>{{ item.field5 }}</td>
+            <td>{{ item.title }}</td>
+            <td>{{ item.price }}</td>
+            <td><img class="icon-table" @click="openInfo(item.explain)" src="../../../assets/icons/info-circle-fill.svg" alt=""></td>
           </tr>
+         
         </tbody>
       </table>
+       <BaseModal class ref="modalInfo">
+            <div class="popup-content mt-3" style="display: block;">
+              <div class="popup-container">
+                <div class="popup-content-box">
+                  <div class="mt-1 pr-1">
+                    <p class=" text-right h4">جزییات سفارش</p>
+                    <div class="separator mb-4"></div>
+                  </div>
+                  <div class="text-justify">
+                    <p><p>{{ selectedItem }}</p></p>
+
+                  </div>
+
+
+
+                  <BaseButton @click="closeInfo" buttonText="بستن "
+                    buttonClasses="btn-close btn btn-danger btn-md btn-multiple-state btn-shadow" />
+                </div>
+              </div>
+            </div>
+          </BaseModal>
     </div>
     <b-pagination class="mt-4 d-flex justify-content-center" v-model="page" pills :total-rows="filteredItems.length"
       :per-page="perPage" aria-controls="my-table"></b-pagination>
@@ -37,47 +61,34 @@
 
 <script>
 import BaseInput from '../forms/baseInput.vue'
+import BaseModal from '../../elements/modal/index.vue'
+import BaseButton from '../../elements/button/baseButton.vue'
 
 export default {
   components: {
-    BaseInput,
+    BaseInput, BaseButton, BaseModal
   },
   data() {
     return {
-      items: [
-        { field1: 'لورم ایپسوم', field2: 'لورم ایپسوم', field3: 'لورم ایپسوم', field4: 'لورم ایپسوم', field5: 'لورم ایپسوم', status: 'failed' },
-        { field1: 'لورم ایپسوم', field2: 'لورم ایپسوم', field3: 'لورم ایپسوم', field4: 'لورم ایپسوم', field5: 'لورم ایپسوم', status: 'success' },
-        { field1: 'لورم ایپسوم', field2: 'لورم ایپسوم', field3: 'لورم ایپسوم', field4: 'لورم ایپسوم', field5: 'لورم ایپسوم', status: 'pending' },
-        { field1: 'لورم ایپسوم', field2: 'لورم ایپسوم', field3: 'لورم ایپسوم', field4: 'لورم ایپسوم', field5: 'لورم ایپسوم', status: 'failed' },
-        { field1: 'لورم ایپسوم', field2: 'لورم ایپسوم', field3: 'لورم ایپسوم', field4: 'لورم ایپسوم', field5: 'لورم ایپسوم', status: 'success' },
-        { field1: 'لورم ایپسوم', field2: 'لورم ایپسوم', field3: 'لورم ایپسوم', field4: 'لورم ایپسوم', field5: 'لورم ایپسوم', status: 'pending' }, { field1: 'لورم ایپسوم', field2: 'لورم ایپسوم', field3: 'لورم ایپسوم', field4: 'لورم ایپسوم', field5: 'لورم ایپسوم', status: 'failed' },
-        { field1: 'لورم ایپسوم', field2: 'لورم ایپسوم', field3: 'لورم ایپسوم', field4: 'لورم ایپسوم', field5: 'لورم ایپسوم', status: 'success' },
-        { field1: 'لورم ایپسوم', field2: 'لورم ایپسوم', field3: 'لورم ایپسوم', field4: 'لورم ایپسوم', field5: 'لورم ایپسوم', status: 'pending' }, { field1: 'لورم ایپسوم', field2: 'لورم ایپسوم', field3: 'لورم ایپسوم', field4: 'لورم ایپسوم', field5: 'لورم ایپسوم', status: 'failed' },
-        { field1: 'لورم ایپسوم', field2: 'لورم ایپسوم', field3: 'لورم ایپسوم', field4: 'لورم ایپسوم', field5: 'لورم ایپسوم', status: 'success' }, { field1: 'لورم ایپسوم', field2: 'لورم ایپسوم', field3: 'لورم ایپسوم', field4: 'لورم ایپسوم', field5: 'لورم ایپسوم', status: 'success' },
-        { field1: 'لورم ایپسوم', field2: 'لورم ایپسوم', field3: 'لورم ایپسوم', field4: 'لورم ایپسوم', field5: 'لورم ایپسوم', status: 'success' },
-        { field1: 'لورم ایپسوم', field2: 'لورم ایپسوم', field3: 'لورم ایپسوم', field4: 'لورم ایپسوم', field5: 'لورم ایپسوم', status: 'success' },
-        { field1: 'لورم ایپسوم', field2: 'لورم ایپسوم', field3: 'لورم ایپسوم', field4: 'لورم ایپسوم', field5: 'لورم ایپسوم', status: 'success' },
-        { field1: 'لورم ایپسوم', field2: 'لورم ایپسوم', field3: 'لورم ایپسوم', field4: 'لورم ایپسوم', field5: 'لورم ایپسوم', status: 'success' },
-
-        { field1: 'لورم ایپسوم', field2: 'لورم ایپسوم', field3: 'لورم ایپسوم', field4: 'لورم ایپسوم', field5: 'لورم ایپسوم', status: 'pending' },
-        // Add more items as needed
-      ],
+     
       searchQuery: '',
       page: 1,
       perPage: 10,
+      selectedItem: '' 
     };
   },
   computed: {
+    materials() {
+      return this.$store.getters["material/loadedMaterials"];
+    },
     filteredItems() {
       const query = this.searchQuery.trim().toLowerCase();
       if (!query) {
-        return this.items;
+        return this.materials;
       }
-      return this.items.filter(item =>
-        item.field1.toLowerCase().includes(query) ||
-        item.field2.toLowerCase().includes(query) ||
-        item.field3.toLowerCase().includes(query) ||
-        item.field5.toLowerCase().includes(query)
+      return this.materials.filter(item =>
+        item.title.toLowerCase().includes(query)
+
       );
     },
     paginatedItems() {
@@ -85,7 +96,23 @@ export default {
       const endIndex = startIndex + this.perPage;
       return this.filteredItems.slice(startIndex, endIndex);
     },
-  }
+  },
+  methods: {
+
+    // Info modal
+    openInfo(item) {
+      this.$refs.modalInfo.openModal();
+      this.selectedItem = item;
+    },
+    closeInfo() {
+      this.$refs.modalInfo.closeModal();
+    },
+  },
+  mounted() {
+    // Dispatch the action to fetch materials
+    this.$store.dispatch("material/getMaterials").then(() => {
+    });
+  },
 };
 </script>
 

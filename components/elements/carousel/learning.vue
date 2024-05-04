@@ -8,7 +8,7 @@
         <div class="slides" @click="goLearning">
           <div v-for="(card, index) in tutorials" :key="index" class="slide"
             :style="{ transform: `translateX(${(index - curSlide) * 110}%)` }">
-            <learningCard :title="card.title" :text="card.description" :img-src="card.imgSrc" :img-alt="card.imgAlt" />
+            <learningCard :title="card.title" :text="card.text" :img-src="card.image" :img-alt="card.text" />
 
           </div>
         </div>
@@ -17,7 +17,7 @@
         </button>
       </div>
       <div class="dots-container">
-        <span v-for="(slide, index) in slides" :key="index" class="dot" :class="{ 'active': index === curSlide }"
+        <span v-for="(slide, index) in tutorials" :key="index" class="dot" :class="{ 'active': index === curSlide }"
           @click="goToSlide(index)"></span>
       </div>
     </div>
@@ -33,7 +33,7 @@ export default {
   },
   data() {
     return {
-      slides: Array.from({ length: 3 }), // Adjust the length as per your requirements
+      slides: Array.from({ length: 5 }), // Adjust the length as per your requirements
       maxSlide: 10, // Change this if needed
       curSlide: 0,
       touchStartX: null,
@@ -108,10 +108,11 @@ export default {
   },
   computed: {
     tutorials() {
-      return this.$store.getters["news/loadedAllnews"] || [];
+      return this.$store.getters["tutorial/loadedTutorials"] ;
     },
   },
   methods: {
+   
     slideLeft() {
       if (this.curSlide < this.maxSlide - 4) {
         this.curSlide++;
@@ -147,7 +148,12 @@ export default {
       this.touchStartX = null;
       this.touchEndX = null;
     }
-  }
+  },
+  mounted() {
+    this.$store.dispatch("tutorial/getTutorials");
+
+        
+    }
 };
 </script>
 

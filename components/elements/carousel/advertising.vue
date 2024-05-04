@@ -18,7 +18,7 @@
         </button>
       </div>
       <div class="dots-container">
-        <span v-for="(slide, index) in slides" :key="index" class="dot" :class="{ 'active': index === curSlide }"
+        <span v-for="(slide, index) in news" :key="index" class="dot" :class="{ 'active': index === curSlide }"
           @click="goToSlide(index)"></span>
       </div>
     </div>
@@ -39,6 +39,7 @@ export default {
       curSlide: 0,
       touchStartX: null,
       touchEndX: null,
+      
       // cards: [
       //   {
       //     title: "نام آگهی",
@@ -141,7 +142,13 @@ export default {
       this.touchStartX = null;
       this.touchEndX = null;
     }
-  }
+  },
+  mounted() {
+    this.$store.dispatch("news/getAllnews");
+    
+
+        
+    }
 };
 </script>
 

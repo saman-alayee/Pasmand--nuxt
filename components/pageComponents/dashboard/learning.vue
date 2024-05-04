@@ -11,8 +11,8 @@
         </div>
         <b-row class="text-right">
             <b-col v-for="(card, index) in filteredCards" :key="index" class="mt-3" lg="3" md="4" sm="6" cols="12">
-                <learningCard :title="card.title" :text="card.text" :img-src="card.imgSrc" :link-destination="'/dashboard/learning/' + card.id.toString()"
-                    :img-alt="card.imgAlt" />
+                <learningCard :title="card.title" :text="card.text" :img-src="card.image" :link-destination="'/dashboard/learning/' + card.id.toString()"
+                    :img-alt="card.title" />
             </b-col>
 
         </b-row>
