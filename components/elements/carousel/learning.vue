@@ -5,8 +5,8 @@
         <button class="arrow--left" @click="slideRight">
           <img src="../../../assets/icons/arrow-left-circle.svg" alt="Previous" />
         </button>
-        <div class="slides" @click="goLearning">
-          <div v-for="(card, index) in tutorials" :key="index" class="slide"
+        <div class="slides" >
+          <div v-for="(card, index) in tutorials" @click="goLearning(card.id)" :key="index" class="slide"
             :style="{ transform: `translateX(${(index - curSlide) * 110}%)` }">
             <learningCard :title="card.title" :text="card.text" :img-src="card.image" :img-alt="card.text" />
 
@@ -34,7 +34,7 @@ export default {
   data() {
     return {
       slides: Array.from({ length: 5 }), // Adjust the length as per your requirements
-      maxSlide: 10, // Change this if needed
+      maxSlide: 5, // Change this if needed
       curSlide: 0,
       touchStartX: null,
       touchEndX: null,
@@ -123,8 +123,8 @@ export default {
         this.curSlide--;
       }
     },
-    goLearning() {
-      this.$router.push('/profile');
+    goLearning(id) {
+      this.$router.push('/dashboard/learning/' + id);
     },
 
     goToSlide(index) {

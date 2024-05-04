@@ -7,9 +7,9 @@ const login = {
   state: {
     token: "",
     email: "",
-    name:"",
+    name: "",
     isAuth: false,
-    citizenId:"",
+    citizenId: "",
   },
   mutations: {
     setToken(state, accessToken) {
@@ -18,47 +18,54 @@ const login = {
     setId(state, id) {
       state.citizenId = id;
     },
-   
+    setId(state, name, family) {
+      state.name = name + "" + family;
+    },
   },
   actions: {
     // login user
     async loginUser({ commit }, { mobile, password }) {
-        console.log(this.$axios.defaults.baseURL)
-        try {
-          const response = await axios.post(
-            `${this.$axios.defaults.baseURL}/citizens/check`,  //usage of base url
-            {
-              mobile: mobile,
-              password: password,
-            }
-          );
-          
-          Swal.fire({
-            title: `خوش آمدید`,
-            icon: "success",
-            showConfirmButton: false,
-            timerProgressBar: true,
-            timer: 3000,
-            toast: true,
-            position: "top",
-          });
-          commit("setToken", response.data.message);
-          commit("setId", response.data.data.id);
-          Cookies.set("Token", response.data.message);
-          Cookies.set("citizenId", response.data.data.id);
-          this.$router.push({ path: "dashboard" });
-  
-        } 
-        catch (error) {
-          Swal.fire({
-            text: "شماره تلفن یا رمز عبور شما اشتباه می باشد .",
-            icon: "error",
-            confirmButtonText: "باشه",
-          });
-        }
-      },
+      console.log(this.$axios.defaults.baseURL);
+      try {
+        const response = await axios.post(
+          `${this.$axios.defaults.baseURL}/citizens/check`, //usage of base url
+          {
+            mobile: mobile,
+            password: password,
+          }
+        );
+
+        Swal.fire({
+          title: `خوش آمدید`,
+          icon: "success",
+          showConfirmButton: false,
+          timerProgressBar: true,
+          timer: 3000,
+          toast: true,
+          position: "top",
+        });
+        commit("setToken", response.data.message);
+        commit("setId", response.data.data.id);
+        commit("setName", response.data.data.name, response.data.data.family);
+
+        Cookies.set("Token", response.data.message,{ secure: true });
+        Cookies.set("citizenId", response.data.data.id);
+        Cookies.set("name", response.data.data.name);
+        Cookies.set("family", response.data.data.family);
+        this.$router.push({ path: "dashboard" });
+      } catch (error) {
+        Swal.fire({
+          text: "شماره تلفن یا رمز عبور شما اشتباه می باشد .",
+          icon: "error",
+          confirmButtonText: "باشه",
+        });
+      }
+    },
     // create user
-    async registerUser({ commit }, { email, password, name, family, mobile, password_confirmation }) {
+    async registerUser(
+      { commit },
+      { email, password, name, family, mobile, password_confirmation }
+    ) {
       try {
         const response = await axios.post(
           `${this.$axios.defaults.baseURL}/citizens/register`,
@@ -80,20 +87,17 @@ const login = {
           toast: true,
           position: "top",
         });
-       this.$router.push({ path: "dashboard" });
-        console.log(response.data.message)
-        
+        this.$router.push({ path: "dashboard" });
+        console.log(response.data.message);
+
         commit("setToken", response.data.message);
         Cookies.set("Token", response.data.message);
       } catch (error) {
         Swal.fire({
-          text: 'اکانت شما موجود می باشد لطفا از ایمیل یا شماره تلفن دیگر استفاده کنید.',
+          text: "اکانت شما موجود می باشد لطفا از ایمیل یا شماره تلفن دیگر استفاده کنید.",
           icon: "error",
           confirmButtonText: "بستن",
         });
-       
-        
-        
       }
     },
   },

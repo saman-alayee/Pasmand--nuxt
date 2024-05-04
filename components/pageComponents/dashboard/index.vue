@@ -70,7 +70,7 @@
                         <div class="card-title pt-2 px-4">
                             <div class="mt-5 d-flex justify-content-between">
                                 <p class="text-right h5">جدیدترین ایستگاه ها</p>
-                                <NuxtLink to="/dashboard/learning">
+                                <NuxtLink to="/dashboard/stations">
                                     <p class=" text-right h6">مشاهده همه ایستگاه ها </p>
                                 </NuxtLink>
 
@@ -78,8 +78,8 @@
 
                         </div>
                         <div class="card-body ps-container scroll dashboard-list-with-user ps ps--active-y">
-                            <stationCard v-for="(station, index) in stations" :key="index" :imageSrc="station.icon"
-                                :title="station.title" :description="station.description" />
+                            <stationCard v-for="(station, index) in stations" :key="station.id" :imageSrc="station.icon"
+                                :title="station.title" :description="station.address" />
                         </div>
                     </div>
                 </div>
@@ -127,31 +127,7 @@ export default {
                 { icon: '<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-x-circle" viewBox="0 0 16 16"><path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/><path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708"/></svg>', title: 'رد شده ', count: 5 },
                 { icon: '<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-calendar" viewBox="0 0 16 16"><path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5M1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4z"/></svg>', title: 'تعداد کل سفارش ها ', count: 25 },
             ],
-            stations: [
-                {
-                    icon: "/img/login/balloon-lg.jpg",
-                    title: "مطهره تقوی",
-                    description: "لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است."
-                },
-                {
-                    icon: "/img/login/balloon-lg.jpg",
-                    title: "مطهره تقوی",
-                    description: "لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است."
-                }, {
-                    icon: "/img/login/balloon-lg.jpg",
-                    title: "مطهره تقوی",
-                    description: "لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است."
-                }, {
-                    icon: "/img/login/balloon-lg.jpg",
-                    title: "مطهره تقوی",
-                    description: "لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است."
-                }, {
-                    icon: "/img/login/balloon-lg.jpg",
-                    title: "مطهره تقوی",
-                    description: "لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است."
-                },
-                // Add more station objects as needed
-            ],
+            
 
             items: [
                 { isActive: true, age: 40, first_name: 'Dickerson', last_name: 'Macdonald' },
@@ -170,6 +146,11 @@ export default {
             ]
         };
     },
+    computed: {
+        stations() {
+            return this.$store.getters["station/loadedStations"] || [];
+        },
+    },
     methods: {
         toggleAccordion(index) {
             this.accordionItems[index].expanded = !this.accordionItems[index].expanded;
@@ -182,6 +163,9 @@ export default {
         }, goComment() {
             this.$router.push('/dashboard/comment');
         },
+    },
+    mounted() {
+         this.$store.dispatch("station/getStations");
     }
 };
 </script>

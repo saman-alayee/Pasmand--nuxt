@@ -15,7 +15,7 @@
                 </div>
             </div>
             <div>
-                <Avatar userName="سامان علایی" />
+                <Avatar :userName=fullName />
             </div>
 
         </nav>
@@ -24,12 +24,23 @@
 
 <script>
 import Avatar from '@/components/elements/avatar/index.vue'
+import Cookies from "js-cookie";
 
 export default {
     name: 'Navbar',
     components: {
-    Avatar
-  },
+        Avatar
+    },
+    data() {
+        return {
+
+        };
+    },
+    computed: {
+        fullName() {
+            return Cookies.get("name") + ' ' + Cookies.get("family");
+        }
+    },
     methods: {
         openMenu() {
             this.$emit('toggle-sidebar'); // Emit an event to toggle sidebar in parent component
@@ -38,6 +49,4 @@ export default {
 };
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

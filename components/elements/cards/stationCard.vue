@@ -1,6 +1,6 @@
 <template>
     <div class="d-flex flex-row mb-3 pb-3 border-bottom">
-        <img :src="require(`../../../assets${imageSrc}`)" alt="icon"
+        <img :src="imageSrc" alt="icon"
             class="img-thumbnail border-0 rounded-circle list-thumbnail align-self-center xsmall">
         <div class="pl-3 mt-2 pr-2">
             <p class="font-weight-medium text-right mb-0">{{ title }}</p>
@@ -15,7 +15,7 @@ export default {
     props: {
         imageSrc: {
             type: String,
-            required: true
+            default: "https://picsum.photos/200/300"
         },
         title: {
             type: String,

@@ -35,7 +35,7 @@ export default {
   data() {
     return {
       slides: Array.from({ length: 6 }), // Adjust the length as per your requirements
-      maxSlide: 8, // Change this if needed
+      maxSlide: 5, // Change this if needed
       curSlide: 0,
       touchStartX: null,
       touchEndX: null,
