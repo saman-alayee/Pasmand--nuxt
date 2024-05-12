@@ -45,6 +45,41 @@ export default {
         openMenu() {
             this.$emit('toggle-sidebar'); // Emit an event to toggle sidebar in parent component
         },
+
+        goMain() {
+            this.$router.push('/dashboard');
+        },
+        goProfile() {
+            this.$router.push('/dashboard/profile');
+        },
+        goHistoryOrder() {
+            this.$router.push('/dashboard/order');
+        },
+        goOrder() {
+            this.$router.push('/dashboard/order/create');
+        },
+        goPrice() {
+            this.$router.push('/dashboard/priceMaterial');
+        },
+        goAdvertising() {
+            this.$router.push('/dashboard/advertising');
+        },
+        goLearning() {
+            this.$router.push('/dashboard/learning');
+        },
+        goStation() {
+            this.$router.push('/dashboard/stations');
+        },
+        goComment() {
+            this.$router.push('/dashboard/comment');
+        },
+        logOut() {
+            localStorage.removeItem('adminToken');
+            this.$router.push('/login_admin');
+        },
+        toggleSidebar() {
+            this.$emit('toggle-sidebar');
+        },
     },
 };
 </script>

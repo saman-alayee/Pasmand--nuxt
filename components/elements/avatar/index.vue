@@ -28,8 +28,8 @@
           { title: 'لیست سفارشات', route: '/dashboard/order' },
           { title: 'ثبت نظر', route: '/dashboard/comment' },
           { title: ' آموزش ها', route: '/dashboard/learning' },
-          { title: 'لیست آگهی ها ', route: '/profile' },
-          { title: 'ایستگاه های جمع آوری', route: '/cart' }
+          { title: 'لیست آگهی ها ', route: '/dashboard/advertising' },
+          { title: 'ایستگاه های جمع آوری', route: '/dashboard/stations' }
         ]
       };
     },

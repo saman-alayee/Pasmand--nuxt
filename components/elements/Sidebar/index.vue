@@ -1,11 +1,11 @@
 <template>
   <div class="sidebar-component-container" :class="{ openSidebar: isOpen }">
-    <div class="user-profile-container" @click="goProfile">
+    <!-- <div class="user-profile-container" @click="goProfile">
       <div class="img-container" :class="{ 'open-image-container': isOpen }">
         <img src="../../../assets/img/login/balloon-lg.jpg" alt="" />
       </div>
       <p class="user-name mt-2" v-if="isOpen"> سامان علایی</p>
-    </div>
+    </div> -->
     <div class="menu-item-container mt-2 mr-3">
       <div class="menu-item" @click="goMain">
         <div class="icon-container">

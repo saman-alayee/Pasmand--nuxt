@@ -11,7 +11,7 @@
         </div>
         <b-row class="text-right">
             <b-col v-for="(card, index) in paginatedCards" :key="index" class="mt-3" lg="3" md="4" sm="6" cols="12">
-                <advertisingCard :title="card.title" :text="card.description" :img-src="card.imgSrc" :img-alt="card.imgAlt" />
+                <advertisingCard  :text="card.title" :img-src="card.imgSrc" :img-alt="card.imgAlt" />
             </b-col>
 
         </b-row>

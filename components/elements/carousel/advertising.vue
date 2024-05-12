@@ -6,10 +6,10 @@
         <button class="arrow--left" @click="slideRight">
           <img src="../../../assets/icons/arrow-left-circle.svg" alt="Previous" />
         </button>
-        <div class="slides" @click="goAdvertising">
+        <div class="slides">
           <div v-for="(card, index) in news" :key="index" class="slide"
             :style="{ transform: `translateX(${(index - curSlide) * 110}%)` }">
-            <advertisingCard :title="card.title" :text="card.description" :img-src="card.imgSrc" :img-alt="card.imgAlt" />
+            <advertisingCard :text="card.title" :img-src="card.imgSrc" :img-alt="card.imgAlt" />
            
           </div>
         </div>
