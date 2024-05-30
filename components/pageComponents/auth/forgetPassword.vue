@@ -66,7 +66,10 @@
           this.error = 'شماره موبایل وارد شده معتبر نیست';
           return;
         }
-        this.$router.push('/confirmPassword');
+        this.$store.dispatch("register/forgetPassword", {
+          mobile: this.mobile,
+        });
+        
   
         // If everything is valid, proceed with the desired action
         // For example, you can make an API call to send the one-time password

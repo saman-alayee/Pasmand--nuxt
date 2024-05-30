@@ -60,10 +60,13 @@
           this.error = 'لطفاً رمز یک بار مصرف را وارد کنید';
           return;
         }
-        if (this.oneTimePassword.length !== 6) {
+        if (this.oneTimePassword.length !== 4) {
         this.error = 'رمز باید 6 کاراکتر باشد';
         return;
       }
+      this.$store.dispatch("register/confirmCode", {
+          code: this.oneTimePassword,
+        });
   
         // If everything is valid, proceed with the desired action
         // For example, you can make an API call to confirm the password

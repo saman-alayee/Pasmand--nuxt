@@ -60,7 +60,7 @@ export default {
 .sidebar-component {
   height: 100vh;
   min-height: 100vh;
-  z-index: 10000;
+  z-index: 1000;
 }
 
 .main {
