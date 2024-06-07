@@ -24,7 +24,10 @@ export default {
     baseURL: "https://mgzp.ir/api",
   },
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: [],
+  plugins: [
+   
+    { src:'~/plugins/persianDatePicker.js', mode: 'client' }
+  ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,

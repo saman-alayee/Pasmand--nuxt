@@ -14,9 +14,10 @@
                 </p>
               </div>
             </b-col>
+            
             <b-col md="7" sm="12" class="mt-5 pt-2">
-              <div class="logo-image p-5">
-                <img src="../../../assets/logos/black.svg" alt="">
+              <div class="logo-image">
+                <img width="200" src="../../../assets/img/logos/logo.png" alt="logo">
               </div>
               <b-card-body class="p-5" title="ورود">
                 <div class="empty-alert" v-if="error">

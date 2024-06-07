@@ -124,6 +124,8 @@
 </template>
 
 <script>
+import Cookies from "js-cookie";
+
 export default {
   name: 'Sidebar',
   props: {
@@ -160,16 +162,12 @@ export default {
     goComment() {
       this.$router.push('/dashboard/comment');
     },
-
-
-
-
-
-
-
     logOut() {
-      localStorage.removeItem('adminToken');
-      this.$router.push('/login_admin');
+      Cookies.remove("Token");
+      Cookies.remove("citizenId");
+      Cookies.remove("name");
+      Cookies.remove("family");
+      this.$router.push('/dashboard/comment');
     },
     toggleSidebar() {
       this.$emit('toggle-sidebar');

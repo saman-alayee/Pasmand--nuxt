@@ -14,8 +14,8 @@
               </div>
             </b-col>
             <b-col md="7" sm="12" class="mt-1">
-              <div class="logo-image p-5">
-                <img src="../../../assets/logos/black.svg" alt="">
+              <div class="logo-image pt-4">
+                <img width="200" src="../../../assets/img/logos/logo.png" alt="logo">
               </div>
               <b-card-body class="p-3" title="ثبت نام">
                 <div class="empty-alert" v-if="error">{{ error }}</div>
