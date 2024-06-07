@@ -1,6 +1,7 @@
 <template>
   <div v-if="userName" class="profile d-flex">
-    <b-dropdown toggle-class="custom-dropdown" no-caret variant="none" class="custom-dropdown" :text="userName">
+    <b-dropdown toggle-class="custom-dropdown" style="padding-left: 2rem;" no-caret variant="none"
+      class="custom-dropdown" :text="userName">
       <b-dropdown-item v-for="(item, index) in items" :key="index" @click="redirect(item.route)">
         {{ item.title }}
       </b-dropdown-item>

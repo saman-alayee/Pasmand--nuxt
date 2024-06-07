@@ -119,6 +119,8 @@ export default {
             station: '',
             time: '',
             area: '',
+            date: '',
+            address: '',
             totalPrice: 0,
             todayprice: 0,
             totalPrice: 0,
