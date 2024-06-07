@@ -151,7 +151,6 @@ export default {
             return this.$store.getters["station/loadedStations"];
         },
     },
-
     mounted() {
         // Dispatch the action to fetch materials
         this.$store.dispatch("material/getMaterials")
