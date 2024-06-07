@@ -5,6 +5,11 @@
             <div class="separator mb-5"></div>
         </div>
         <div>
+            <div class="empty-alert text-justify" v-if="errors.length > 0">
+                <ul>
+                    <li v-for="error in errors" :key="error">{{ error }}</li>
+                </ul>
+            </div>
             <b-row>
                 <b-col class="mt-3" v-for="(item, index) in materials" :key="index" lg="6" md="6" sm="12" cols="12">
                     <orderCard :title="item.title" :fee="item.price" :id="item.id" @addMaterial="handleAddMaterial" />
@@ -19,18 +24,17 @@
                         </option>
                     </select>
                 </b-col>
-                <b-col class="mt-3" lg="6" md="4" sm="12" cols="12">
+                <!-- <b-col class="mt-3" lg="6" md="4" sm="12" cols="12">
                     <label for="">تاریخ</label>
                     <date-picker class="" v-model="date" format="YYYY-MM-DD" display-format="jYYYY-jMM-jDD"
                         color="#038503" />
-                </b-col>
+                </b-col> -->
                 <b-col class="mt-3" lg="6" md="4" sm="12" cols="12">
                     <label for="">زمان روزانه</label>
                     <select class="custom-input" v-model="time">
                         <option v-for="(option, index) in times" :key="index" :value="option.value">{{ option.label }}
                         </option>
                     </select>
-
                 </b-col>
                 <b-col class="mt-3" lg="6" md="4" sm="12" cols="12">
                     <label for=""> ایستگاه</label>
@@ -40,10 +44,11 @@
                     </select>
 
                 </b-col>
-                <b-col class="mt-3" lg="12" md="12" sm="12" cols="12">
+                <b-col class="mt-3" lg="6" md="4" sm="12" cols="12">
                     <label for=""> ادرس </label>
-                    <baseInput isTextarea="true" type="textarea" align="right" placeholder="ادرس" v-model="address" />
-
+                    <baseInput isTextarea="true" type="textarea" align="right" placeholder="آدرس" v-model="address" />
+                </b-col>
+                <b-col class="mt-3" lg="12" md="12" sm="12" cols="12">
                     <table v-if="addedMaterials.length" class="custom-table-price">
                         <thead>
                             <tr>
@@ -73,7 +78,7 @@
                     </table>
                 </b-col>
                 <b-col class="mt-3" lg="4" md="4" sm="4" cols="8">
-                    <BaseButton @click="goCreate" buttonText="ثبت سفارش جدید"
+                    <BaseButton @click="submitOrder" buttonText="ثبت سفارش جدید"
                         buttonClasses="btn-login btn btn-success btn-md btn-multiple-state btn-shadow" />
                 </b-col>
 
@@ -90,6 +95,7 @@ import baseInput from '../../elements/forms/baseInput.vue';
 import baseSelect from '../../elements/forms/selectInput.vue';
 import Footer from '../../elements/footer/footer.vue';
 import BaseButton from '../../elements/button/baseButton.vue'
+import Cookies from "js-cookie";
 
 export default {
     components: {
@@ -119,17 +125,66 @@ export default {
             station: '',
             time: '',
             area: '',
-            date: '',
             address: '',
             totalPrice: 0,
             todayprice: 0,
             totalPrice: 0,
-            addedMaterials: []
+            addedMaterials: [],
+            errors: []
         };
     },
     methods: {
-        goCreate() {
-            // Your goCreate method logic
+        submitOrder() {
+            this.clearErrors();
+            if (this.validateForm()) {
+                const formData = new FormData();
+                formData.append('stations_id', this.station);
+                formData.append('timeset', this.time);
+                formData.append('zone', this.area);
+                formData.append('citizens_id', Cookies.get("citizenId"));
+                formData.append('status_id', 1);
+                formData.append('order_code', this.generateOrderCode());
+                formData.append('address', this.address);
+                // Append materials data to FormData
+                const materialsData = this.addedMaterials.map(material => ({
+                    matrial_id: material.material_id,
+                    todayprice: material.todayprice,
+                    total: material.total
+                }));
+                formData.append('matrials', JSON.stringify(materialsData));
+
+
+                this.$store.dispatch('orders/createOrders', formData);
+            }
+        },
+        generateOrderCode() {
+            return Math.floor(Math.random() * 100000000); // Generates a random 8-digit number
+        },
+        validateForm() {
+            this.errors = [];
+            if (!this.area) {
+                this.errors.push('لطفاً منطقه را وارد کنید');
+            }
+            if (!this.time) {
+                this.errors.push('لطفاً زمان روزانه را وارد کنید');
+            }
+            if (!this.station) {
+                this.errors.push('لطفاً ایستگاه را وارد کنید');
+            }
+            if (!this.address) {
+                this.errors.push('لطفاً آدرس را وارد کنید');
+            }
+            if (this.addedMaterials.length === 0) {
+                this.errors.push('لطفاً حداقل یک جنس اضافه کنید');
+            }
+            if (this.errors.length === 0) {
+                return true;
+            } else {
+                return false;
+            }
+        },
+        clearErrors() {
+            this.errors = [];
         },
         handleAddMaterial(material) {
             const index = this.addedMaterials.findIndex(item => item.title === material.title);
